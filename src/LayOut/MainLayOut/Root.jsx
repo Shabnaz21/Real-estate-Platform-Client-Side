@@ -6,7 +6,7 @@ import FooterDesign from '../../Components/Shared/Footer';
 
 const Root = () => {
     return (
-        <div>
+        <div className='font-nunito'>
             <Nav></Nav>
             <Outlet></Outlet>
             <FooterDesign></FooterDesign>

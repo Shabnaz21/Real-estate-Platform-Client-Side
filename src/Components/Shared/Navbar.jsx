@@ -9,44 +9,44 @@ const Nav = () => {
         <li><NavLink
             to="/"
             className={({ isActive }) =>
-                isActive ? 'text-[#F23B3B] md:text-lg' : 'md:text-lg'
+                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
         >Home
         </NavLink> </li>
         <li><NavLink to='/all-properties'
             className={({ isActive }) =>
-                isActive ? 'text-[#F23B3B] md:text-lg' : 'md:text-lg'
+                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
         >All properties </NavLink> </li>
         <li><NavLink to='/register'
             className={({ isActive }) =>
-                isActive ? 'text-[#F23B3B] md:text-lg' : 'md:text-lg'
+                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
         >Register</NavLink></li>
     </>
 
     return (
         <section >
-            <div className="hidden lg:block bg-[#071C1F] text-white">
+            <div className="hidden lg:block bg-[#0E7490] text-white">
                 <div className="navbar container mx-auto p-2">
                     <div className='flex items-center justify-between font-nunito'>
                         <div className="flex gap-4">
                             <div className="flex items-center gap-3">
-                                <MdOutlineMailLock className='text-xl hover:text-[#F23B3B]' />
+                                <MdOutlineMailLock className='text-xl hover:text-rose-500' />
                                 <p className="md:text-md">Info@webmail.com</p>
                             </div>
                             <div className="flex items-center gap-3">
-                                <IoLocation className='text-xl hover:text-[#F23B3B]' />
+                                <IoLocation className='text-xl hover:text-rose-500' />
                                 <p className="md:text-md">547 ns tower St. anglo City, USA</p>
                             </div>
                         </div>
                         <div className="gap-5">
                             <div className="flex gap-3">
-                                <BsFacebook className='hover:text-[#F23B3B]'/>
-                                <BsTwitter className='hover:text-[#F23B3B]'/>
-                                <BsLinkedin className='hover:text-[#F23B3B]' />
-                                <BsInstagram className='hover:text-[#F23B3B]' />
-                                <BsYoutube className='hover:text-[#F23B3B]' />
+                                <BsFacebook className='hover:text-rose-500'/>
+                                <BsTwitter className='hover:text-rose-500'/>
+                                <BsLinkedin className='hover:text-rose-500' />
+                                <BsInstagram className='hover:text-rose-500' />
+                                <BsYoutube className='hover:text-rose-500' />
                             </div>
                         </div>
                    </div>
@@ -78,7 +78,7 @@ const Nav = () => {
                         <Dropdown.Item>Sign out</Dropdown.Item>
                     </Dropdown>
                     <Navbar.Toggle />
-                    <Button className='font-nunito bg-[#F23B3B]'>Sign Up</Button>
+                    <Button className='font-nunito bg-rose-500'>Sign Up</Button>
                 </div>
                 <div className='items-center'> 
                     <Navbar.Collapse className='font-nunito'>
