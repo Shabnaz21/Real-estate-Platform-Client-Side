@@ -53,14 +53,15 @@ const Nav = () => {
                 </div>
             </div>
             <hr />
-            <Navbar fluid rounded className='container mx-auto'>
+            <Navbar fluid rounded className='container mx-auto '>
                 <Navbar.Brand>
                     <img src="https://i.ibb.co/Vjvym7r/logo.png" className="mr-3 h-6 sm:h-9" alt="NewVilla Logo" />
-                    <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white font-poppins">
+                    <span className="self-center whitespace-nowrap text-2xl font-semibold 
+                    dark:text-white font-poppins">
                         NewVilla</span>
                 </Navbar.Brand>
                 <div className="flex md:order-2">
-                    {/* <Dropdown
+                    <Dropdown
                         arrowIcon={false}
                         inline
                         label={
@@ -76,7 +77,7 @@ const Nav = () => {
                         <Dropdown.Divider />
                         <Dropdown.Item>Sign out</Dropdown.Item>
                     </Dropdown>
-                    <Navbar.Toggle /> */}
+                    <Navbar.Toggle />
                     <Button className='font-nunito bg-[#F23B3B]'>Sign Up</Button>
                 </div>
                 <div className='items-center'> 
