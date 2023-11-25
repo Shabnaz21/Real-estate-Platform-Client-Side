@@ -8,7 +8,7 @@ import { IoHomeOutline } from "react-icons/io5";
 const PropertyTypes = () => {
     return (
         <section className="bg-[#F8F7FC]">
-            <div className="container mx-auto pl-5 md:pl-10 pt-20 pb-20">
+            <div className="container mx-auto pl-5 md:pl-10 pt-20 pb-10">
                 <div className="flex items-center flex-col md:flex-row lg:gap-x-40 md:gap-x-14 mb-10">
                     <div>
                         <SectionTitle
@@ -16,7 +16,7 @@ const PropertyTypes = () => {
                             heading={'Explore our Latest Features Listing'}
                         ></SectionTitle>
                     </div>
-                    <div>
+                    <div className="text-lg mr-2">
                         <p>Our company provides a full range of services for the real
                             private houses and cottages since 19</p>
                     </div>
@@ -26,16 +26,17 @@ const PropertyTypes = () => {
                 md:grid-cols-3 grid-cols-2 
                 place-content-center">
                     <SharedType
+                        icon={<FaHome />}
+                        PropertyCategory={'Apartment'}
+                        ProjectCount={'20'}
+                    ></SharedType>
+
+                    <SharedType
                             icon={<MdOutlineHomeWork />}
                         PropertyCategory={'Town House'}
                             ProjectCount={'15'}
                         ></SharedType>
-                    <SharedType
-                        icon={<FaHome />}
-                        PropertyCategory={'Apartment'}
-                        ProjectCount={'13'}
-                    ></SharedType>
-                    
+
                     <SharedType
                         icon={<TbHomeCheck />}
                         PropertyCategory={'Multifamily House '}

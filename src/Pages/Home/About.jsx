@@ -6,8 +6,9 @@ import { MdPeopleAlt } from "react-icons/md";
 
 const About = () => {
     return (
-        <section className="flex items-center py-10 xl:mx-40  xl:h-screen font-poppins dark:bg-gray-800 lg:mt-20 ">
-            <div className="justify-center flex-1 container py-4 mx-auto lg:py-6 md:px-6">
+        <section className="flex items-center py-10 xl:mx-40 lg:mt-5">
+            <div className="justify-center 
+            flex-1 container py-4 mx-auto lg:py-6 md:px-6">
                 <div className="flex xl:gap-x-20 lg:gap-x-10 flex-col lg:flex-row">
                     <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
                         <div className="relative ">
@@ -28,7 +29,7 @@ const About = () => {
                             subHeading={'Trusted Real estate Care'}
                             heading={'Dream living Spaces setting New Build'}
                         ></SectionTitle>
-                        <p className="mt-6 mb-10 text-base leading-7 text-gray-500 dark:text-gray-400">
+                        <p className="mt-6 mb-10 text-lg leading-7">
                             Transmds is the world’s driving worldwide coordinations supplier —
                             we uphold industry and exchange the worldwide trade of merchandi
                         </p>
@@ -39,23 +40,23 @@ const About = () => {
                             overflow-hidden bg-gray-100 rounded-full border-t-4 border-red-500 dark:bg-gray-600">
                                     <FaHome className="absolute w-8 h-8 m-3 lg:m-2 xl:m-3" />
                                 </div>
-                                <p>Perfect Duplex Houses</p>
+                                <p className="font-bold">Perfect Duplex Houses</p>
                             </div>
                             <div className="flex items-center gap-x-4 text-xl">
                                 <div className="relative w-16 h-16 
                             overflow-hidden bg-gray-100 rounded-full border-t-4 border-red-500 dark:bg-gray-600">
                                     <MdPeopleAlt className="absolute w-8 h-8 m-3 lg:m-2 xl:m-3" />
                                 </div>
-                                <p>Friendly Support Team</p>
+                                <p className="font-bold">Friendly Support Team</p>
                             </div>
                         </div>
-                        <div className="m-8 mx-18 space-y-2">
+                        {/* list */}
+                        <div className="m-8 mx-18 space-y-2 text-lg leading-8">
                             <div className="flex gap-2 items-center">
                                 <FaRegCheckCircle className="text-red-500" />
                                 <p>Living rooms are pre-wired for Surround</p>
                             </div>
-
-                            <div className="flex gap-2 items-center">
+                            <div className="flex gap-2 items-center ">
                                 <FaRegCheckCircle className="text-red-500" />
                                 <p>Luxurious interior design and amenities</p>
                             </div>
@@ -65,7 +66,7 @@ const About = () => {
                             </div>
                         </div>
                         <div className="flex place-content-center lg:block mt-10">
-                            <Button className="bg-red-500 hover:bg-red-600 uppercase">More about us</Button>
+                            <Button className="bg-red-500 hover:bg-red-600 uppercase font-bold">More about us</Button>
                         </div>
                     </div>
                 </div>
