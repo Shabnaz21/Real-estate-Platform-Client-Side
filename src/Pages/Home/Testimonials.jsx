@@ -23,7 +23,7 @@ const Testimonials = () => {
             .then(data => setReview(data))
     }, [])
     return (
-        <section className="container mx-auto">
+        <section className="container mx-auto mt-16">
             <div className='xl:ml-[500px] lg:ml-80 ml-16'>
                 <SectionTitle
                     subHeading={'Trusted Real estate Care'}

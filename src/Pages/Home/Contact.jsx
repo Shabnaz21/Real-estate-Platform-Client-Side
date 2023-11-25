@@ -9,13 +9,14 @@ const Contact = () => {
         <section className="container mx-auto">
             <div className="overflow-hidden bg-white py-8 sm:py-16">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <SectionTitle
-                        subHeading={'Contact with us'}
-                        heading={'Looking for to buy a property?'}
-                    ></SectionTitle>
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
                         <div className="lg:pr-8 lg:pt-4">
+                            <SectionTitle
+                                subHeading={'Contact with us'}
+                                heading={'Looking for to buy a property?'}
+                            ></SectionTitle>
                             <div className="lg:max-w-lg">
+                                
                                 <p className="mt-6 text-lg leading-8 text-gray-600">Browse our property listing and find your best and suitable home or house for sale, rent and buying. It’s so easy and fast.
                                 </p>
                                 <div className="mt-5 ml-10 space-y-3">

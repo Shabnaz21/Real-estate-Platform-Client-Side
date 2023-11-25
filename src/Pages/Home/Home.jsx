@@ -3,6 +3,7 @@ import Banner from "./BAnner";
 import Contact from "./Contact";
 import About from "./About";
 import Testimonials from "./Testimonials";
+import PropertyTypes from "./Types/PropertyTypes";
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <About></About>
+            <PropertyTypes></PropertyTypes>
             <Testimonials></Testimonials>
             <Contact></Contact>
         </div>
