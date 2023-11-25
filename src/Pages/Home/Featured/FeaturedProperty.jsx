@@ -2,6 +2,7 @@ import SectionTitle from "../../../Components/SectionTitle";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa";
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const FeaturedProperty = () => {
     return (
@@ -109,7 +110,7 @@ const FeaturedProperty = () => {
 
             </div>
             <div className="flex xl:mx-[600px] lg:mx-[400px] md:mx-60 mx-28 lg:block md:mt-10">
-                <Button className="bg-red-500 hover:bg-red-600 uppercase font-bold">Explore Property</Button></div>
+                <Link to='/properties'> <Button className="bg-red-500 hover:bg-red-600 uppercase font-bold">Explore Property</Button></Link></div>
         </section>
     );
 };

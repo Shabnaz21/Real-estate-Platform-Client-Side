@@ -1,11 +1,56 @@
-import { Button } from "flowbite-react";
+import { useRef } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import { ToastContainer, toast } from "react-toastify";
 
 
 const Login = () => {
+    const emailRef = useRef(null);
+    const { signIn, handleGoogleSignIn, handleGithubSignIn } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        form.reset();
+
+        // signIn User
+        signIn(email, password)
+            .then(result => {
+                toast.success('Congratulations, you are successfully logged in!');
+                const LoggedInUser = result.user;
+                console.log(LoggedInUser);
+
+                // navigate
+                navigate(location?.state ? location?.state : '/')
+            })
+
+
+            .catch(error => {
+                if (error.code === 'auth/invalid-login-credentials') {
+                    toast.error('Invalid login');
+                    return ('error.message');
+                } else if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+                    toast.error("Invalid email or password. Please try again.");
+                }
+                else {
+                    toast.warn('An error occurred. Please try again later.');
+                    return;
+                }
+            });
+    }
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Log In | NewVilla</title>
+             
+            </Helmet>
             <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
                 <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                     <div className="flex-1 text-center hidden lg:flex">
@@ -24,7 +69,7 @@ const Login = () => {
                             </h1>
                             <div className="w-full flex-1 mt-8">
                                 <div className="flex flex-col items-center">
-                                    <button
+                                    <button onClick={handleGoogleSignIn}
                                         className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3
                                          bg-slate-100 text-gray-800
                                          flex items-center justify-center
@@ -37,7 +82,7 @@ const Login = () => {
                                          Login with Google
                                         </span>
                                     </button>
-                                    <button
+                                    <button onClick={handleGithubSignIn}
                                         className="w-full max-w-xs 
                                         font-bold shadow-sm rounded-lg py-3 bg-slate-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">
                                         <div className="bg-white p-2 rounded-full">
@@ -56,24 +101,23 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <form className="mx-auto max-w-xs">
-                                    <input
+                                <form onSubmit={handleLogin}  className="mx-auto max-w-xs">
+                                    <input ref={emailRef}
                                         className="w-full px-8 py-4 rounded-lg font-medium 
                                         bg-slate-100 border border-gray-200
                                          placeholder-gray-500 text-sm focus:outline-none
-                                          focus:border-gray-400 focus:bg-white"
+                                          focus:border-gray-400 focus:bg-white"  name="email"
                                         type="email" placeholder="Email" />
                                     <input
                                         className="w-full px-8 py-4 rounded-lg font-medium 
                                         bg-slate-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                        type="password" placeholder="Password" />
+                                        name="password"  type="password" placeholder="Password" />
                                     
-                                    <Button
-                                        className="mt-5 font-semibold
-                                         bg-red-500 text-white
+                                    <button
+                                        className="mt-5 font-semibold bg-red-500 text-white rounded-xl
                                          w-full py-2 ">
-                                      Log In
-                                    </Button>
+                                        Sign Up
+                                    </button>
                                  
                                     <p className="mt-6 text-sm text-gray-600 text-center">
                                         Haven&#x27;t an account?
@@ -88,9 +132,9 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                   
                 </div>
             </div>
+            < ToastContainer />
         </>
     );
 };

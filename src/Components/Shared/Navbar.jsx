@@ -3,8 +3,15 @@ import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsYoutube } from 'react
 import { MdOutlineMailLock } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const Nav = () => {
+    const { user, logOut } = useAuth();
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
     const menus = <>
         <li><NavLink
             to="/"
@@ -13,16 +20,32 @@ const Nav = () => {
             }
         >Home
         </NavLink> </li>
-        <li><NavLink to='/properties'
+        <li><NavLink to='/about'
             className={({ isActive }) =>
                 isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
-        >Properties </NavLink> </li>
-        <li><NavLink to='/register'
+        >About</NavLink></li>
+
+        <li><NavLink to='/all-properties'
             className={({ isActive }) =>
                 isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
-        >Register</NavLink></li>
+        > All Properties </NavLink> </li>
+        <li><NavLink to='/blog'
+            className={({ isActive }) =>
+                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
+            }
+        >Blog</NavLink></li>
+        <li><NavLink to='/news'
+            className={({ isActive }) =>
+                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
+            }
+        >News</NavLink></li>
+        <li><NavLink to='/contact'
+            className={({ isActive }) =>
+                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
+            }
+        >Contact</NavLink></li>
     </>
 
     return (
@@ -61,27 +84,37 @@ const Nav = () => {
                         NewVilla</span>
                 </Navbar.Brand>
                 <div className="flex md:order-2">
-                    <Dropdown
-                        arrowIcon={false}
-                        inline
-                        label={
-                            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
-                        }
-                    >
-                        <Dropdown.Header>
-                            <span className="block text-sm">Bonnie Green</span>
-                            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-                        </Dropdown.Header>
-                        <Dropdown.Item>Dashboard</Dropdown.Item>
-                        <Dropdown.Item>Settings</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item>Sign out</Dropdown.Item>
-                    </Dropdown>
-                    <Navbar.Toggle />
-                    <Link to='/register'>
-                        <Button className='font-nunito bg-red-500'>Sign Up</Button>
-                    </Link>
-                </div>
+                    {
+                        user ? (
+                            <>
+                                <div >
+                                    <Dropdown
+                                        arrowIcon={false}
+                                        inline
+                                        label={
+                                            <Avatar alt={user.displayName}
+                                                img={user.photoURL} 
+                                                rounded />
+                                        }
+                                    >
+                                        <Dropdown.Header>
+                                            <span className="block text-sm">{user.displayName}</span>
+                                            <span className="block truncate text-sm font-medium">{user.email}</span>
+                                        </Dropdown.Header>
+                                        <Dropdown.Item>Dashboard</Dropdown.Item>
+                                        <Dropdown.Item>Settings</Dropdown.Item>
+                                        <Dropdown.Divider />
+                                        <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
+                                    </Dropdown>
+                                    <Navbar.Toggle />
+                                </div>
+                            </>
+                        ) : (
+                                <Link to='/register'>
+                                    <Button className='font-nunito bg-red-500'>Sign Up</Button>
+                                </Link>   
+                        )}
+               </div>
                 <div className='items-center'>
                     <Navbar.Collapse className='font-nunito'>
                         {menus}

@@ -7,6 +7,9 @@ import Root from "../../LayOut/MainLayOut/Root";
 import Error from "../../Components/Error";
 import Register from "../../Pages/Users/Register";
 import Login from "../../Pages/Users/Login";
+import Contact from "../../Pages/Home/Contact";
+import Properties from "../../Pages/Properties/Properties";
+
 
 
 const router = createBrowserRouter([
@@ -18,6 +21,14 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home></Home>
+            },
+            {
+                path: '/all-properties',
+                element:<Properties></Properties>
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
             }
         ]
     },
