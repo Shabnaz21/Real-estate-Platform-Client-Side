@@ -6,7 +6,7 @@ import { MdPeopleAlt } from "react-icons/md";
 
 const About = () => {
     return (
-        <section className="flex items-center py-10 xl:mx-40  xl:h-screen font-poppins dark:bg-gray-800 lg:mt-20 mb-20">
+        <section className="flex items-center py-10 xl:mx-40  xl:h-screen font-poppins dark:bg-gray-800 lg:mt-20 ">
             <div className="justify-center flex-1 container py-4 mx-auto lg:py-6 md:px-6">
                 <div className="flex xl:gap-x-20 lg:gap-x-10 flex-col lg:flex-row">
                     <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
@@ -37,14 +37,14 @@ const About = () => {
                             <div className="flex items-center gap-x-4 text-xl">
                                 <div className="relative w-16 h-16 
                             overflow-hidden bg-gray-100 rounded-full border-t-4 border-rose-500 dark:bg-gray-600">
-                                    <FaHome className="absolute w-10 h-10 m-2" />
+                                    <FaHome className="absolute w-8 h-8 m-3 lg:m-2 xl:m-3" />
                                 </div>
                                 <p>Perfect Duplex Houses</p>
                             </div>
                             <div className="flex items-center gap-x-4 text-xl">
                                 <div className="relative w-16 h-16 
                             overflow-hidden bg-gray-100 rounded-full border-t-4 border-rose-500 dark:bg-gray-600">
-                                    <MdPeopleAlt className="absolute w-10 h-10 m-2" />
+                                    <MdPeopleAlt className="absolute w-8 h-8 m-3 lg:m-2 xl:m-3" />
                                 </div>
                                 <p>Friendly Support Team</p>
                             </div>

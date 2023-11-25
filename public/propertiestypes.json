@@ -1,0 +1,82 @@
+[
+    {
+        "type": "Apartment",
+        "image": "apartment_image.jpg",
+        "location": "Downtown City",
+        "agent": "John Doe",
+        "agentImage": "agent_john_doe.jpg",
+        "verificationStatus": "Verified",
+        "priceRange": "$300,000 - $400,000",
+        "description": "Modern and spacious apartment in the heart of the city. Close to amenities and public transportation."
+    },
+    {
+        "type": "House",
+        "image": "house_image.jpg",
+        "location": "Suburban Neighborhood",
+        "agent": "Jane Smith",
+        "agentImage": "agent_jane_smith.jpg",
+        "verificationStatus": "Verified",
+        "priceRange": "$500,000 - $600,000",
+        "description": "Charming single-family house with a large backyard. Perfect for a growing family."
+    },
+    {
+        "type": "Condo",
+        "image": "condo_image.jpg",
+        "location": "Luxury District",
+        "agent": "Robert Johnson",
+        "agentImage": "agent_robert_johnson.jpg",
+        "verificationStatus": "Verified",
+        "priceRange": "$700,000 - $800,000",
+        "description": "High-end condo with breathtaking city views. Exclusive amenities and top-notch security."
+    },
+    {
+        "type": "Townhouse",
+        "image": "townhouse_image.jpg",
+        "location": "Historic District",
+        "agent": "Emily Davis",
+        "agentImage": "agent_emily_davis.jpg",
+        "verificationStatus": "Pending",
+        "priceRange": "$450,000 - $550,000",
+        "description": "Quaint townhouse with vintage charm. Renovated interiors and proximity to cultural attractions."
+    },
+    {
+        "type": "Commercial Space",
+        "image": "commercial_space_image.jpg",
+        "location": "Business District",
+        "agent": "Michael Turner",
+        "agentImage": "agent_michael_turner.jpg",
+        "verificationStatus": "Verified",
+        "priceRange": "Contact for Pricing",
+        "description": "Spacious commercial space suitable for offices, retail, or other business ventures."
+    },
+    {
+        "type": "Vacation Home",
+        "image": "vacation_home_image.jpg",
+        "location": "Scenic Mountains",
+        "agent": "Sophia Clark",
+        "agentImage": "agent_sophia_clark.jpg",
+        "verificationStatus": "Verified",
+        "priceRange": "$600,000 - $700,000",
+        "description": "Relaxing vacation home with panoramic views. Ideal for holiday getaways or rental investment."
+    },
+    {
+        "type": "Luxury Villa",
+        "image": "luxury_villa_image.jpg",
+        "location": "Coastal Paradise",
+        "agent": "William Turner",
+        "agentImage": "agent_william_turner.jpg",
+        "verificationStatus": "Pending",
+        "priceRange": "$1,000,000 - $1,500,000",
+        "description": "Exquisite luxury villa with private beach access. Unparalleled elegance and sophistication."
+    },
+    {
+        "type": "Land",
+        "image": "land_image.jpg",
+        "location": "Countryside",
+        "agent": "Olivia White",
+        "agentImage": "agent_olivia_white.jpg",
+        "verificationStatus": "Verified",
+        "priceRange": "$200,000 - $300,000",
+        "description": "Expansive piece of land with development potential. Perfect for investors or builders."
+    }
+]

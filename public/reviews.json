@@ -1,0 +1,33 @@
+[
+    {
+        "reviewerName": "Alice Johnson",
+        "reviewerImage": "url_to_image_alice.jpg",
+        "reviewDescription": "I had a great experience with NewVilla. The property exceeded my expectations, and the agent was very helpful throughout the process.",
+        "propertyTitle": "Luxurious Villa"
+    },
+    {
+        "reviewerName": "Bob Smith",
+        "reviewerImage": "url_to_image_bob.jpg",
+        "reviewDescription": "Smooth transactions and excellent customer service. Found my dream home with the help of NewVilla. Highly recommended!",
+        "propertyTitle": "Modern Apartment"
+    },
+    {
+        "reviewerName": "Eva Martinez",
+        "reviewerImage": "url_to_image_eva.jpg",
+        "reviewDescription": "Impressed with the variety of properties available. Found the perfect investment opportunity. Thank you, NewVilla!",
+        "propertyTitle": "Vacation Home"
+    },
+    {
+        "reviewerName": "David Anderson",
+        "reviewerImage": "url_to_image_david.jpg",
+        "reviewDescription": "Responsive team and a straightforward process. Happy with my property purchase experience. Will definitely use NewVilla again!",
+        "propertyTitle": "Townhouse"
+    },
+    {
+        "reviewerName": "Sophie Brown",
+        "reviewerImage": "url_to_image_sophie.jpg",
+        "reviewDescription": "Great platform for both buyers and sellers. Found a property that perfectly fits my needs. Kudos to NewVilla!",
+        "propertyTitle": "Condo"
+    }
+
+]
