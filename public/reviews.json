@@ -1,33 +1,37 @@
 [
     {
         "reviewerName": "Alice Johnson",
-        "reviewerImage": "url_to_image_alice.jpg",
+        "reviewerImage": "https://i.ibb.co/VQTG381/Alice-Johnson-2019-State-of-the-Union-Guests-40035011983-cropped.jpg",
+        "reviewerDesignation": "Marketing Executive",
         "reviewDescription": "I had a great experience with NewVilla. The property exceeded my expectations, and the agent was very helpful throughout the process.",
         "propertyTitle": "Luxurious Villa"
     },
     {
         "reviewerName": "Bob Smith",
-        "reviewerImage": "url_to_image_bob.jpg",
+        "reviewerImage": "https://i.ibb.co/wcsWJFd/Bob-Smith.jpg",
+        "reviewerDesignation": "Software Engineer",
         "reviewDescription": "Smooth transactions and excellent customer service. Found my dream home with the help of NewVilla. Highly recommended!",
         "propertyTitle": "Modern Apartment"
     },
     {
         "reviewerName": "Eva Martinez",
-        "reviewerImage": "url_to_image_eva.jpg",
+        "reviewerImage": "https://i.ibb.co/2qYsC3b/Eva-Martinez.jpg",
+        "reviewerDesignation": "Financial Analyst",
         "reviewDescription": "Impressed with the variety of properties available. Found the perfect investment opportunity. Thank you, NewVilla!",
         "propertyTitle": "Vacation Home"
     },
     {
         "reviewerName": "David Anderson",
-        "reviewerImage": "url_to_image_david.jpg",
+        "reviewerImage": "https://i.ibb.co/RC7sCCn/zpq9990999120001.jpg",
+        "reviewerDesignation": "Business Consultant",
         "reviewDescription": "Responsive team and a straightforward process. Happy with my property purchase experience. Will definitely use NewVilla again!",
         "propertyTitle": "Townhouse"
     },
     {
         "reviewerName": "Sophie Brown",
-        "reviewerImage": "url_to_image_sophie.jpg",
+        "reviewerImage": "https://i.ibb.co/FYYq7Z8/Sophie-Stone21-2018-DA.jpg",
+        "reviewerDesignation": "Women's Rowing",
         "reviewDescription": "Great platform for both buyers and sellers. Found a property that perfectly fits my needs. Kudos to NewVilla!",
         "propertyTitle": "Condo"
     }
-
 ]
