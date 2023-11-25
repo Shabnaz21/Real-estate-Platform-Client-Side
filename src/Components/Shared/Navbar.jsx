@@ -2,7 +2,7 @@ import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsYoutube } from 'react-icons/bs';
 import { MdOutlineMailLock } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Nav = () => {
     const menus = <>
@@ -13,11 +13,11 @@ const Nav = () => {
             }
         >Home
         </NavLink> </li>
-        <li><NavLink to='/all-properties'
+        <li><NavLink to='/properties'
             className={({ isActive }) =>
                 isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
-        >All properties </NavLink> </li>
+        >Properties </NavLink> </li>
         <li><NavLink to='/register'
             className={({ isActive }) =>
                 isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
@@ -78,7 +78,9 @@ const Nav = () => {
                         <Dropdown.Item>Sign out</Dropdown.Item>
                     </Dropdown>
                     <Navbar.Toggle />
-                    <Button className='font-nunito bg-red-500'>Sign Up</Button>
+                    <Link to='/register'>
+                        <Button className='font-nunito bg-red-500'>Sign Up</Button>
+                    </Link>
                 </div>
                 <div className='items-center'>
                     <Navbar.Collapse className='font-nunito'>

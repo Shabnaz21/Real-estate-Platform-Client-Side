@@ -1,4 +1,5 @@
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
     return (
@@ -45,15 +46,15 @@ const Register = () => {
                                          w-full py-2 ">
                                         Sign Up
                                     </Button>
-                                    <p className="mt-6 text-xs text-gray-600 text-center">
-                                        I agree to abide by templatanas
-                                        <a href="#" className="border-b border-gray-500 border-dotted ml-1 mr-1">
-                                            Terms of Service
-                                        </a>
-                                        and its
-                                        <a href="#" className="border-b border-gray-500 border-dotted ml-1">
-                                            Privacy Policy
-                                        </a>
+                                    
+                                    <p className="mt-6 text-sm text-gray-600 text-center">
+                                        Already have an account?
+                                        <Link to='/login'>
+                                            <span className="border-b border-red-500 text-red-500 border-dotted ml-1 mr-1">
+                                                Login
+                                            </span>
+                                        </Link>
+                                     
                                     </p>
                                 </form>
                             </div>
