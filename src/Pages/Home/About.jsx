@@ -19,7 +19,7 @@ const About = () => {
                                     Providing business solutions from 10 years
                                 </p>
                             </div>
-                            <div className="absolute hidden w-full lg:h-[550px] bg-rose-500 rounded -bottom-6 left-6 lg:block">
+                            <div className="absolute hidden w-full lg:h-[550px] bg-red-500 rounded -bottom-6 left-6 lg:block">
                             </div>
                         </div>
                     </div>
@@ -36,31 +36,31 @@ const About = () => {
                         <div className="flex gap-x-5 flex-col md:flex-row space-y-5 items-center">
                             <div className="flex items-center gap-x-4 text-xl">
                                 <div className="relative w-16 h-16 
-                            overflow-hidden bg-gray-100 rounded-full border-t-4 border-rose-500 dark:bg-gray-600">
+                            overflow-hidden bg-gray-100 rounded-full border-t-4 border-red-500 dark:bg-gray-600">
                                     <FaHome className="absolute w-8 h-8 m-3 lg:m-2 xl:m-3" />
                                 </div>
                                 <p>Perfect Duplex Houses</p>
                             </div>
                             <div className="flex items-center gap-x-4 text-xl">
                                 <div className="relative w-16 h-16 
-                            overflow-hidden bg-gray-100 rounded-full border-t-4 border-rose-500 dark:bg-gray-600">
+                            overflow-hidden bg-gray-100 rounded-full border-t-4 border-red-500 dark:bg-gray-600">
                                     <MdPeopleAlt className="absolute w-8 h-8 m-3 lg:m-2 xl:m-3" />
                                 </div>
                                 <p>Friendly Support Team</p>
                             </div>
                         </div>
                         <div className="m-8 mx-18 space-y-2">
-                            <div  className="flex gap-2 items-center">
-                                <FaRegCheckCircle className="text-rose-500" />
+                            <div className="flex gap-2 items-center">
+                                <FaRegCheckCircle className="text-red-500" />
                                 <p>Living rooms are pre-wired for Surround</p>
                             </div>
-                            
+
                             <div className="flex gap-2 items-center">
-                                <FaRegCheckCircle className="text-rose-500" />
+                                <FaRegCheckCircle className="text-red-500" />
                                 <p>Luxurious interior design and amenities</p>
                             </div>
                             <div className="flex gap-2 items-center">
-                                <FaRegCheckCircle className="text-rose-500" />
+                                <FaRegCheckCircle className="text-red-500" />
                                 <p>Nestled in the Buckhead</p>
                             </div>
                         </div>

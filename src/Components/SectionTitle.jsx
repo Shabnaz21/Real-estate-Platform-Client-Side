@@ -3,7 +3,7 @@ import { FaHome } from "react-icons/fa";
 const SectionTitle = ({ heading, subHeading }) => {
     return (
         <>
-            <div className="flex items-center gap-4 text-rose-500">
+            <div className="flex items-center gap-4 text-red-500">
                 <FaHome className="text-xl" />
                 <p className="uppercase font-bold">{subHeading}</p>
             </div>

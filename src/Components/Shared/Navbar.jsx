@@ -32,24 +32,24 @@ const Nav = () => {
                     <div className='flex items-center justify-between font-nunito'>
                         <div className="flex gap-4">
                             <div className="flex items-center gap-3">
-                                <MdOutlineMailLock className='text-xl hover:text-rose-500' />
+                                <MdOutlineMailLock className='text-xl hover:text-red-500' />
                                 <p className="md:text-md">Info@webmail.com</p>
                             </div>
                             <div className="flex items-center gap-3">
-                                <IoLocation className='text-xl hover:text-rose-500' />
+                                <IoLocation className='text-xl hover:text-red-500' />
                                 <p className="md:text-md">547 ns tower St. anglo City, USA</p>
                             </div>
                         </div>
                         <div className="gap-5">
                             <div className="flex gap-3">
-                                <BsFacebook className='hover:text-rose-500'/>
-                                <BsTwitter className='hover:text-rose-500'/>
-                                <BsLinkedin className='hover:text-rose-500' />
-                                <BsInstagram className='hover:text-rose-500' />
-                                <BsYoutube className='hover:text-rose-500' />
+                                <BsFacebook className='hover:text-red-500' />
+                                <BsTwitter className='hover:text-red-500' />
+                                <BsLinkedin className='hover:text-red-500' />
+                                <BsInstagram className='hover:text-red-500' />
+                                <BsYoutube className='hover:text-red-500' />
                             </div>
                         </div>
-                   </div>
+                    </div>
                 </div>
             </div>
             <hr />
@@ -78,17 +78,17 @@ const Nav = () => {
                         <Dropdown.Item>Sign out</Dropdown.Item>
                     </Dropdown>
                     <Navbar.Toggle />
-                    <Button className='font-nunito bg-rose-500'>Sign Up</Button>
+                    <Button className='font-nunito bg-red-500'>Sign Up</Button>
                 </div>
-                <div className='items-center'> 
+                <div className='items-center'>
                     <Navbar.Collapse className='font-nunito'>
                         {menus}
                     </Navbar.Collapse>
                 </div>
-              
+
             </Navbar>
         </section>
-       
+
     );
 };
 

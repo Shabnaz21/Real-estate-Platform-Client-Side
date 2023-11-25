@@ -84,7 +84,7 @@ const Testimonials = () => {
                                                         <div className="w-full text-left">
                                                             <div>
                                                                 <div className="mb-4 lg:mt-10">
-                                                                    <p className="text-2xl text-rose-500 font-bold">
+                                                                    <p className="text-2xl text-red-500 font-bold">
                                                                         {item.propertyTitle}</p>
                                                                 </div>
                                                                 <p

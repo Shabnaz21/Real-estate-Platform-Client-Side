@@ -65,7 +65,7 @@ const FooterDesign = () => {
                 </div>
             </Footer>
             <footer>
-                <div className="flex items-center p-4 lg:pl-20 lg:pr-10 bg-[#F23B3B] text-white gap-x-20  justify-between">
+                <div className="flex items-center p-4 lg:pl-20 lg:pr-10 bg-red-500 text-white gap-x-20  justify-between">
                     <p></p>
                     <nav className="grid-flow-col gap-4 md:place-self-center font-semibold md:justify-self-end">
                         Developed by: <Link to='https://github.com/Shabnaz21'>Shabnaz</Link>
