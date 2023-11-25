@@ -1,6 +1,5 @@
 import { Button, Label, Select, TextInput } from "flowbite-react";
-import { FaSearch } from "react-icons/fa";
-import SectionTitle from "../../Components/SectionTitle";
+import { FaHome, FaSearch } from "react-icons/fa";
 import { FaDollarSign} from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 const Banner = () => {
@@ -11,10 +10,15 @@ const Banner = () => {
                     <div className="w-100 mx-auto sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
                         <div className="grid items-center gap-12 lg:grid-cols-2 xl:gap-x-24">
                             <div className="mt-12 lg:mt-0">
-                                <SectionTitle
-                                    subHeading={'Real estate agency'}
-                                    heading={'Find your Dream Home by us'}
-                                ></SectionTitle>
+                                <div className="flex items-center gap-4 text-rose-500">
+                                    <FaHome className="text-xl" />
+                                    <p className="uppercase font-bold">Real estate agency</p>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="213" height="6" viewBox="0 0 213 6" fill="none">
+                                    <path d="M0.385449 5.06768C70.7978 3.06405 140.806 2.7456 211.168 5.99651C213.628 6.11593 213.594 3.1304 211.168 2.98444C141.261 -1.1555 70.1407 -1.27492 0.385449 4.44403C-0.120024 4.48384 -0.136873 5.08095 0.385449 5.06768Z" fill="#F23B3B" />
+                                </svg>
+                                <h1 className="mt-2 mb-12 text-5xl font-bold font-poppins tracking-tight md:text-6xl ">
+                                    Find your Dream Home by us</h1>
                                 <div className="absolute -mt-24 xl:ml-[500px] ml-[350px] hidden lg:block">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="120" viewBox="0 0 96 97" fill="none">
                                         <path d="M5.92966 24.5469C5.79668 38.5006 12.6897 54.6516 27.2858 56.9412C34.0707 58.017 41.3041 54.6745 44.3666 48.2033C46.7423 43.1801 44.6669 36.6768 38.7054 36.7083L38.7047 36.7085C34.5157 36.8992 30.7813 39.2544 28.683 43.0294C20.7037 57.1549 36.6362 70.1603 48.6007 72.2233C62.4787 74.634 76.2606 69.124 85.4723 58.6967C86.8103 57.1854 89.2378 59.3993 87.8997 60.9106C77.9093 72.2145 63.097 78.0976 48.0873 75.4689C35.8621 73.3426 22.9101 63.4822 23.7184 48.9122C23.8921 45.8074 24.8436 42.8531 26.473 40.3563C28.1024 37.8595 30.3514 35.9113 32.9863 34.7129C37.2553 32.7653 43.5419 32.6669 46.8754 37.1552C50.7218 42.2676 48.036 49.566 44.6482 53.6539C40.8075 58.2022 35.2458 60.6782 29.3559 60.4625C12.2069 59.7797 2.67261 40.9927 2.83817 24.6839C2.86117 22.5813 5.9497 22.4085 5.9287 24.5467L5.92966 24.5469Z" fill="#FA4A4A" />
