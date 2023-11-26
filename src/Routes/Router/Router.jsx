@@ -9,6 +9,7 @@ import Register from "../../Pages/Users/Register";
 import Login from "../../Pages/Users/Login";
 import Contact from "../../Pages/Home/Contact";
 import Properties from "../../Pages/Properties/Properties";
+import PropertyDetails from "../../Pages/Properties/PropertyDetails/PropertyDetails";
 
 
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: '/all-properties',
                 element:<Properties></Properties>
+            },
+            {
+                path: '/property-details',
+                element: <PropertyDetails></PropertyDetails>
             },
             {
                 path: '/contact',

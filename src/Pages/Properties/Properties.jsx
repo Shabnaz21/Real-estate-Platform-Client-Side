@@ -1,18 +1,27 @@
-import { Avatar, Button } from "flowbite-react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaHome, FaRegHeart } from "react-icons/fa";
-import { IoLocationOutline, IoPricetag } from "react-icons/io5";
-import { MdVerified } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
+import PropertyCard from "./PropertyCard";
 
 
 const Properties = () => {
+    const [properties, setProperties] = useState([]);
+
+    useEffect(() => {
+        fetch('/properties.json')
+            .then(res => res.json())
+            .then(data =>
+                setProperties(data)
+            )
+    }, [])
+
     return (
         <>
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>All Properties | NewVilla</title>
             </Helmet>
-            <section className="container mx-auto mt-10 mb-20">
+            <section className="container mx-auto  mt-10 mb-20">
                 <div className="md:mx-auto max-w-4xl space-y-3 mx-10 ">
                     <div className="lg:mx-80 mx-14 md:mx-64">
                         <div className="flex items-center gap-4 text-red-500">
@@ -38,49 +47,16 @@ const Properties = () => {
                    </div>
                 </div>
                 {/* card */}
-                <div className="max-w-6xl mt-28 xl:mx-auto mx-10">
-                    <div className='flex flex-col gap-2 shadow-lg max-h-[500px] rounded-xl
-              w-[375px]'>
-                        <div
-                            className='aspect-square w-full
-                            relative overflow-hidden rounded-t-xl'>
-                            <img className='object-cover '
-                                src='https://a0.muscache.com/im/pictures/4f70b681-a792-4530-8c52-f2a8d262942d.jpg' alt='Property'/>
-                            <div className='absolute top-3 right-3'>
-                                <MdVerified className="text-2xl text-red-500" />
-                            </div>
-                        </div>
-                        {/* agents */}
-                        <div className="pl-5 pr-4 flex justify-between items-center">
-                            <Avatar img="/images/people/profile-picture-5.jpg" size="md" className="justify-start"
-                                bordered color="pink" rounded>
-                                <div className="space-y-1 font-medium dark:text-white">
-                                    <p className="text-lg font-extrabold">Leslie Alexander</p>
-                                </div>
-                            </Avatar>
-                            <div className="text-xl text-red-500">
-                                <FaRegHeart />
-                            </div>
-                        </div>
-                        {/* details */}
-                        <div className="p-5 space-y-2">
-                            <div className='font-semibold text-xl'>Sidemen, Indonesia</div>
-                            <div className="flex gap-3 items-center">
-                                <IoPricetag className="text-lg" />
-                                <p>price</p>
-                            </div>
-                            <div className="flex gap-3 items-center">
-                                <IoLocationOutline className="text-lg" />
-                                <p>Location</p>
-                            </div>
-                        </div>
-                        <div className="pb-5 flex place-content-center">
-                            <Button className="w-1/2 ">Details</Button>
-                        </div>
-                        
-                    </div>
-                </div>
+                <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 
+               2xl:mx-auto xl:mx-16 lg:mx-32 md:mx-5 mx-10 gap-8 mt-10 xl:mt-20">
+                    {
+                        properties.map(item => <PropertyCard
+                            key={item._id}
+                            property={item}
 
+                        ></PropertyCard>)
+                    }
+            </div>
             </section>
 
         </>
