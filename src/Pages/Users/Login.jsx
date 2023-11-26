@@ -3,7 +3,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
-import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -22,7 +22,13 @@ const Login = () => {
         // signIn User
         signIn(email, password)
             .then(result => {
-                toast.success('Congratulations, you are successfully logged in!');
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: 'Congratulations, you are successfully logged in!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 const LoggedInUser = result.user;
                 console.log(LoggedInUser);
 
@@ -32,14 +38,30 @@ const Login = () => {
 
 
             .catch(error => {
+                console.log(error);
                 if (error.code === 'auth/invalid-login-credentials') {
-                    toast.error('Invalid login');
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Sorry! Invalid login. Please Give correct Email & Password.',
+                        icon: 'error',
+                        confirmButtonText: 'okay'
+                    })
                     return ('error.message');
                 } else if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
-                    toast.error("Invalid email or password. Please try again.");
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Invalid email or password. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'okay'
+                    })
                 }
                 else {
-                    toast.warn('An error occurred. Please try again later.');
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred. Please try again later.',
+                        icon: 'error',
+                        confirmButtonText: 'okay'
+                    })
                     return;
                 }
             });
@@ -49,7 +71,6 @@ const Login = () => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Log In | NewVilla</title>
-             
             </Helmet>
             <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
                 <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -116,7 +137,7 @@ const Login = () => {
                                     <button
                                         className="mt-5 font-semibold bg-red-500 text-white rounded-xl
                                          w-full py-2 ">
-                                        Sign Up
+                                        Login
                                     </button>
                                  
                                     <p className="mt-6 text-sm text-gray-600 text-center">
@@ -134,7 +155,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            < ToastContainer />
         </>
     );
 };

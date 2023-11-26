@@ -1,5 +1,5 @@
 import { FaHome } from "react-icons/fa";
-
+import PropTypes from 'prop-types';
 const SectionTitle = ({ heading, subHeading }) => {
     return (
         <>
@@ -16,5 +16,8 @@ const SectionTitle = ({ heading, subHeading }) => {
         </>
     );
 };
-
+SectionTitle.propTypes = {
+    heading: PropTypes.object,
+    subHeading: PropTypes.object
+}
 export default SectionTitle;
