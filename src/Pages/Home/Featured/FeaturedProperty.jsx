@@ -1,19 +1,11 @@
 import SectionTitle from "../../../Components/SectionTitle";
 import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import FeaturedCard from "./FeaturedCard";
+import useProperties from "../../../Hooks/useProperties";
 
 const FeaturedProperty = () => {
-    const [properties, setProperties] = useState([]);
-
-    useEffect(() => {
-        fetch('/properties.json')
-            .then(res => res.json())
-            .then(data =>
-                setProperties(data)
-            )
-    }, [])
+    const [properties] = useProperties();
     const sortedProperties = [...properties].sort((a, b) => b.propertiesQuantity - a.propertiesQuantity);
 
 

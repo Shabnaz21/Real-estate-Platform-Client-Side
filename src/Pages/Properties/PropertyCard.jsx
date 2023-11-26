@@ -3,10 +3,10 @@ import { FaRegHeart } from 'react-icons/fa';
 import { IoLocationOutline, IoPricetag } from 'react-icons/io5';
 import { MdVerified } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PropertyCard = ({ property }) => {
-    console.log(property);
-    const { propertyImage, priceRange, propertyTitle, agentInformation, location } = property;
+    const { _id, propertyImage, priceRange, propertyTitle, agentInformation, location } = property;
 
     return (
         <div className='flex flex-col gap-2 shadow-lg max-h-[500px] rounded-xl
@@ -44,7 +44,7 @@ const PropertyCard = ({ property }) => {
                     <p>{location} </p>
                 </div>
             </div>
-            <Link to=''>
+            <Link to={`/property-details/${_id}`}>
                 <div className="pb-5 flex place-content-center">
                     <Button className="w-1/2">
                         Details
@@ -54,5 +54,7 @@ const PropertyCard = ({ property }) => {
         </div>
     );
 };
-
+PropertyCard.propTypes = {
+    property: PropTypes.object,
+}
 export default PropertyCard;

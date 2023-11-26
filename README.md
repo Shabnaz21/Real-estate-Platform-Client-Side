@@ -9,6 +9,7 @@ NewVilla is a Real estate Platform (an online platform where people can add and 
 - React Icon
 - SweetAlert2
 - Swiper
+- Axios
 
 ## UI Design
 - Tailwind CSS

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const FeaturedCard = ({ properties }) => {
-    const { propertyTitle, priceRange, propertyImage, location} = properties;
+    const {_id, propertyTitle, priceRange, propertyImage, location} = properties;
     return (
         <>
             <div className="relative mb-12 w-full max-w-[368px] md:mr-12 
@@ -31,7 +31,7 @@ const FeaturedCard = ({ properties }) => {
                     </div>
                     <div className="flex justify-between bottom-0 ">
                         <p className="text-red-600 text-lg font-bold">$ {priceRange}</p>
-                        <Link>
+                        <Link to={`/property-details/${_id}`} >
                             <p className="
                          bg-red-500 p-2 text-white flex place-content-center"><FaArrowRight /></p>
                         </Link>

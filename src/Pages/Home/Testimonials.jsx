@@ -13,15 +13,19 @@ import { useEffect, useState } from 'react';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+import useAxios from "../../Hooks/useAxios";
 
 
 const Testimonials = () => {
+    const axios = useAxios();
     const [review, setReview] = useState([]);
+    
     useEffect(() => {
-        fetch('/reviews.json')
-            .then(res => res.json())
-            .then(data => setReview(data))
-    }, [])
+        axios.get('/reviews')
+            .then(data =>
+                setReview(data?.data)
+            )
+    }, [axios])
     return (
         <section className="bg-slate-100 pt-24 pb-10">
             <div className="container mx-auto ">

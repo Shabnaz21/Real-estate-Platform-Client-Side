@@ -17,7 +17,7 @@ const SectionTitle = ({ heading, subHeading }) => {
     );
 };
 SectionTitle.propTypes = {
-    heading: PropTypes.object,
-    subHeading: PropTypes.object
+    heading: PropTypes.string,
+    subHeading: PropTypes.string
 }
 export default SectionTitle;

@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react";
+
 import { Helmet } from "react-helmet-async";
 import { FaHome } from "react-icons/fa";
 import PropertyCard from "./PropertyCard";
+import useProperties from "../../Hooks/useProperties";
 
 
 const Properties = () => {
-    const [properties, setProperties] = useState([]);
-
-    useEffect(() => {
-        fetch('/properties.json')
-            .then(res => res.json())
-            .then(data =>
-                setProperties(data)
-            )
-    }, [])
+    const [properties] = useProperties();
 
     return (
         <>
