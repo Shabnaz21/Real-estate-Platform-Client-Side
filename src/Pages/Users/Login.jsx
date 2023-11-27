@@ -1,14 +1,14 @@
 import { useRef } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/Shared/SocialLogin";
 
 
 const Login = () => {
     const emailRef = useRef(null);
-    const { signIn, handleGoogleSignIn, handleGithubSignIn } = useAuth();
+    const { signIn} = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -92,29 +92,7 @@ const Login = () => {
                             </h1>
                             <div className="w-full flex-1 mt-8">
                                 <div className="flex flex-col items-center">
-                                    <button onClick={handleGoogleSignIn}
-                                        className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3
-                                         bg-slate-100 text-gray-800
-                                         flex items-center justify-center
-                                         transition-all duration-300 ease-in-out
-                                         focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
-                                        <div className="bg-white p-2 rounded-full">
-                                            <FaGoogle className='text-red-500' />
-                                        </div>
-                                        <span className="ml-4">
-                                         Login with Google
-                                        </span>
-                                    </button>
-                                    <button onClick={handleGithubSignIn}
-                                        className="w-full max-w-xs 
-                                        font-bold shadow-sm rounded-lg py-3 bg-slate-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">
-                                        <div className="bg-white p-2 rounded-full">
-                                            <FaGithub className='text-red-500' />
-                                        </div>
-                                        <span className="ml-4">
-                                           Login with GitHub
-                                        </span>
-                                    </button>
+                                   <SocialLogin></SocialLogin>
                                 </div>
 
                                 <div className="my-12 border-b text-center">

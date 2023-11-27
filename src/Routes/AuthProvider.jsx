@@ -19,32 +19,11 @@ const githubProvider = new GithubAuthProvider();
 
 
 const AuthProvider = ({ children }) => {
-
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(true);
-    // Google
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const loggedInUser = result.user;
-                setUser(loggedInUser)
-                setLoading(true);
-                setError(true)
-            }).catch(error => {
-                console.log(error.message);
-            })
-    }
-    // gitHub
-    const handleGithubSignIn = () => {
-        signInWithPopup(auth, githubProvider)
-            .then(result => {
-                const loggedUser = result.user;
-                setUser(loggedUser);
-                setLoading(true);
-            })
-    }
 
+    // create
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
@@ -54,6 +33,21 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
+    
+    // Google
+    const googleSignIn = () => {
+        setLoading(true);
+        setError(true)
+        return signInWithPopup(auth, googleProvider);
+    }
+   
+    // gitHub
+    const githubSignIn = () => {
+        setLoading(true);
+        setError(true)
+        return signInWithPopup(auth, githubProvider);
+    }
+    
     // logout
     const logOut = () => {
         setLoading(true);
@@ -86,8 +80,8 @@ const AuthProvider = ({ children }) => {
         resetPassword,
         signIn,
         error,
-        handleGoogleSignIn,
-        handleGithubSignIn,
+        googleSignIn,
+        githubSignIn,
         logOut
 
     }

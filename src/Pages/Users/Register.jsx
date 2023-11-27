@@ -1,13 +1,17 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { updateProfile } from "firebase/auth";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import useAxios from "../../Hooks/useAxios";
+import SocialLogin from "../../Components/Shared/SocialLogin";
 
 const Register = () => {
+    const navigate = useNavigate();
     const { createUser } = useAuth();
+    const axios = useAxios();
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
@@ -29,17 +33,31 @@ const Register = () => {
                 updateProfile(result.user, {
                     displayName: name,
                     photoURL: photo
-                }).then()
+                })
+                    .then(() => {
+
+                        //entry database 
+                        const userInfo = {
+                            name: name,
+                            email: email
+                        }
+                        axios.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    Swal.fire({
+                                        position: "center",
+                                        icon: "success",
+                                        title: 'Congratulations! Successfully Your account crated',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
+                    })
                     .catch((error) => {
                         console.log(error.message);
                     });
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: 'Congratulations! Successfully Your account crated',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
 
             })
             .catch(error => {
@@ -138,10 +156,17 @@ const Register = () => {
                                     {success && <p className="text-green-700">{success}</p>}
                                 </form>
                             </div>
+                            <div className="my-12 border-b text-center">
+                                <div
+                                    className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                                    Or Sign Up with Social
+                                </div>
+                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                     <div className="flex-1 hidden lg:flex">
-                        <img src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg" alt="" />
+                        <img src="https://i.ibb.co/PNgfNzN/sign-concept-illustration-114360-125.png" alt="" />
                     </div>
                 </div>
             </div>
