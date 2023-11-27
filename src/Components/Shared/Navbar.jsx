@@ -101,7 +101,7 @@ const Nav = () => {
                                             <span className="block text-sm">{user.displayName}</span>
                                             <span className="block truncate text-sm font-medium">{user.email}</span>
                                         </Dropdown.Header>
-                                        <Link to='/dashboard'><Dropdown.Item>
+                                        <Link to='/dashboard/my-profile'><Dropdown.Item>
                                             Dashboard
                                         </Dropdown.Item> </Link>
                                         

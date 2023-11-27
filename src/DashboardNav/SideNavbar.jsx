@@ -1,7 +1,7 @@
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
-import { Dropdown } from 'flowbite-react';
 import { NavLink } from 'react-router-dom';
+
 const SideNavbar = () => {
     return (
         <>
@@ -15,41 +15,46 @@ const SideNavbar = () => {
                    text-white font-poppins">
                             NewVilla</span>
                     </div>
-
                     <div className="pb-6 mt-4 overflow-x-hidden overflow-y-auto">
                         <ul className="mb-8 text-sm">
-                            <li>
-                                <li
-                                    className="flex items-center px-6 py-4 text-gray-300
+                            <li
+                                className="flex items-center px-6 py-4 text-gray-300
                                       hover:text-white">
-                                    <span className="inline-block mr-3">
-                                        <MdDashboard className='text-xl' />
-                                    </span>
-                                    <span className='text-lg'>Dashboard</span>
-                                </li>
+                                <span className="inline-block mr-3">
+                                    <MdDashboard className='text-xl' />
+                                </span>
+                                <span className='text-lg'>Dashboard</span>
                             </li>
                             <li>
-                                <li
-                                    className="flex items-center px-6 py-4 text-gray-300
-                                      hover:text-white">
-                                    <span className="inline-block mr-3">
-                                        <FaUser />
-                                    </span>
-                                    <span>
-                                        <Dropdown label="Profile"
-                                            inline>
-                                            <NavLink to='/dashboard/my-profile'><Dropdown.Item>
-                                                My Profile
-                                            </Dropdown.Item> </NavLink>
-                                            <NavLink to='/dashboard/wishlist'>
-                                                <Dropdown.Item>Wishlist</Dropdown.Item>
-                                            </NavLink>
-                                          
-                                            <Dropdown.Item>Property Bought</Dropdown.Item>
-                                        </Dropdown>
-                                    </span>
-                                </li>
-                            </li> 
+                                {/* Collapse Navbar */}
+                                <details className="group text-gray-300 text-lg">
+                                    <summary
+                                        className="flex items-center 
+                                            gap-3 px-4 py-3 marker:content-none">
+                                        <span className="inline-block items-center">
+                                            <svg className="w-5 h-5 text-gray-500 transition group-open:rotate-90" xmlns="http://www.w3.org/2000/svg"
+                                                width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z">
+                                                </path>
+                                            </svg></span>
+                                        <p>
+                                            <span>Profile</span>
+                                        </p>
+                                    </summary>
+                                    <article className="px-4 mx-10 pb-4">
+                                        <NavLink to='/dashboard/my-profile'>
+                                            <li className="mb-2"> My Profile </li></NavLink>
+                                        <NavLink to='/dashboard/wishlist'>
+                                            <li className="mb-2">Wishlist</li>
+                                        </NavLink>
+                                        <NavLink>
+                                            <li className="mb-2">
+                                                Property Bought</li>
+                                        </NavLink>
+                                    </article>
+                                </details>
+                            </li>
                         <hr  className='mx-5'/>
                             <li className='space-y-3 mt-5'>
                                 <NavLink  to='/'
