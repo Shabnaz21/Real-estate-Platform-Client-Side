@@ -15,7 +15,7 @@ const PropertyButton = ({ PropertyData }) => {
     const gate = useLocation();
     const [openModal, setOpenModal] = useState(false);
     const { user } = useAuth();
-    const [,refetch] = useWishList();
+    const [refetch] = useWishList();
     console.log(user);
 
     const handleAddToCart = () => {
@@ -23,7 +23,8 @@ const PropertyButton = ({ PropertyData }) => {
             //send wishlist item to the database
             const wishlist = {
                 propertyId: _id,
-                email: user.email,
+                userEmail: user?.email,
+                userName: user?.displayName,
                 propertyTitle,
                 propertyImage,
                 location,

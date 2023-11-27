@@ -14,6 +14,7 @@ import DashboardLayout from "../../LayOut/DashboardLayout";
 import PrivateRoutes from "../PrivateRoutes";
 import UserProfile from "../../Pages/Dashboard/user/UserProfile";
 import Wishlist from "../../Pages/Dashboard/user/Wishlist";
+import Offer from "../../Pages/Dashboard/user/Offer";
 
 
 
@@ -66,9 +67,16 @@ const router = createBrowserRouter([
             {
                 path: 'my-profile',
                 element: <UserProfile></UserProfile>
-            }, {
+            },
+            {
                 path: 'wishlist',
                 element:<Wishlist></Wishlist>
+            },
+            {
+                path: 'make-an-offer/:id', 
+                element: <Offer></Offer>,
+                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+                
             }
         ]
     }

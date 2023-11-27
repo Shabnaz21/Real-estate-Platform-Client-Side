@@ -42,7 +42,7 @@ const WishlistRow = ({ Wishlist, handleDelete }) => {
                 </td>
                 <td className="grid grid-rows-3 items-center px-2 py-10 gap-5 mr-18 place-content-center">
                     <Link
-                        // to={`/update-my-food/${_id}`}
+                        to={`/dashboard/make-an-offer/${_id}`}
                     >
                         <button className="font-medium btn btn-sm
                          text-blue-600 dark:text-blue-500 hover:underline">Make An Offer</button>
