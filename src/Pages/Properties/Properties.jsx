@@ -3,11 +3,18 @@ import { Helmet } from "react-helmet-async";
 import { FaHome } from "react-icons/fa";
 import PropertyCard from "./PropertyCard";
 import useProperties from "../../Hooks/useProperties";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Properties = () => {
+    const { loading } = useAuth();
     const [properties] = useProperties();
 
+    // loading
+    if (loading) {
+        return <span className="loading loading-dots text-center loading-lg"></span>
+    }
+    
     return (
         <>
             <Helmet>

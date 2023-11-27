@@ -3,14 +3,20 @@ import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 import FeaturedCard from "./FeaturedCard";
 import useProperties from "../../../Hooks/useProperties";
+import useAuth from "../../../Hooks/useAuth";
 
 const FeaturedProperty = () => {
+    const { loading } = useAuth();
     const [properties] = useProperties();
     const sortedProperties = [...properties].sort((a, b) => b.propertiesQuantity - a.propertiesQuantity);
 
-
     // Slice the sorted array to show only the first 6 items
     const displayedProperties = sortedProperties.slice(0, 4);
+    
+    // loading
+    if (loading) {
+        return <span className="loading loading-dots text-center loading-lg"></span>
+    }
 
     return (
         <section className="container mt-10  xl:mx-auto">

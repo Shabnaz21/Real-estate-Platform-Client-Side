@@ -1,8 +1,9 @@
+import { Avatar } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 
-const WishlistRow = () => {
-    
+const WishlistRow = ({ Wishlist, handleDelete }) => {
+    const { _id, propertyTitle, propertyImage, location, agentInformation, priceRange } = Wishlist;
     return (
         <>
             <tr className=" bg-white border-b
@@ -18,41 +19,26 @@ const WishlistRow = () => {
 
                 <td className="px-6 py-4">
                     <div className="flex items-center space-x-3">
-                        <div className="avatar">
-                            <div className="rounded-xl w-20 h-20">
-                                {/* <img src={foodImage} alt={foodName} /> */}
-                            </div>
-                        </div>
-                        <div>
-                            <div className="font-bold">foodName</div>
-                        </div>
+                        <Avatar img={propertyImage} alt={propertyTitle} size="xl">
+                            <div className="font-bold font-lg">{propertyTitle}</div>
+                        </Avatar>
                     </div>
                 </td>
                 <td className="px-6 py-4">
-                    {/* {location} */}
+                    {location}
                 </td>
                 <td className="px-6 py-4">
-                    {/* Agent Info */}
-                    {/* <div className="flex items-center space-x-3">
-                        <div className="avatar">
-                            <div className="rounded-xl w-20 h-20">
-                                <img src={foodImage} alt={foodName} />
-                            </div>
-                        </div>
-                        <div>
-                            <div className="font-bold">foodName</div>
-                        </div>
-                    </div> */}
-                </td>
-                <td className="px-6 py-4">
-                    {/* {status} */}
-
-                    {/* {
-                        status === 'available' ? <span className="font-bold text-primary">Sold</span> :
-                            <button className="btn btn-ghost btn-xs">Available</button>} */}
+                    <Avatar img={agentInformation?.agentImage} alt={agentInformation?.agentName} size="lg">
+                        <div className="font-bold font-lg">{agentInformation?.agentName}</div>
+                    </Avatar>
                 </td>
                 <td className="px-6 py-4 text-center">
-                    {/* {donatedMoney} */}
+                    {priceRange}
+                </td>
+                <td className="px-6 py-4 text-md font-semibold">
+                    {
+                        status === 'Verified' ? <span className="font-bold text-primary">Un Verified</span> :
+                            <button className="btn btn-ghost btn-xs">Verified</button>}
                 </td>
                 <td className="grid grid-rows-3 items-center px-2 py-10 gap-5 mr-18 place-content-center">
                     <Link
@@ -63,7 +49,7 @@ const WishlistRow = () => {
 
                     </Link>
                     <Link
-                        // onClick={() => handleDelete(_id)}
+                        onClick={() => handleDelete(_id)}
                         className="font-medium btn btn-sm text-red-600 dark:text-red-500 hover:underline">
                         Remove</Link>
                 </td>

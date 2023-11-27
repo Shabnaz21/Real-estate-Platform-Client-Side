@@ -1,11 +1,53 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-// import useAxios from "../../../Hooks/useAxios";
-// import useAuth from "../../../Hooks/useAuth";
+import useWishList from "../../../Hooks/useWishList";
+import WishlistRow from "./WishlistRow";
+import Swal from "sweetalert2";
+import useAxios from "../../../Hooks/useAxios";
+
 
 const Wishlist = () => {
-    // const axios = useAxios();
-    // const { user } = useAuth();
-    // const userEmail = user?.email
+    const axios = useAxios();
+    const [cart, refetch] = useWishList();
+    const [lists, setLists] = useState([])
+    
+    const handleDelete = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+            .then((result) => {
+            if (result.isConfirmed) {
+                const url = `/wishlist/${id}`;
+                axios.delete(url)
+                    .then(data => {
+                        console.log(data);
+                        if (data?.data?.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'The property has been deleted.',
+                                'success'
+                            );
+                        }
+                        const remaining = lists.filter(list => list._id !== id);
+                        setLists(remaining);
+                        refetch();
+                    })
+                    .catch(error => {
+                        console.error("Error deleting property:", error);
+
+                    });
+            }
+        });
+    };
+
+
+    
     return (
         <section className='container mx-auto m-10'>
             <Helmet>
@@ -57,7 +99,11 @@ const Wishlist = () => {
                     </thead>
                     <tbody>
                         {
-                            // map
+                            cart.map(item => <WishlistRow
+                                key={item._id}
+                                Wishlist={item}
+                                handleDelete={handleDelete}
+                            ></WishlistRow>)
                         }
                     </tbody>
                 </table>

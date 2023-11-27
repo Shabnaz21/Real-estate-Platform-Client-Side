@@ -9,10 +9,10 @@ import useWishList from "../../../Hooks/useWishList";
 
 const PropertyButton = ({ PropertyData }) => {
     const { _id, propertyTitle, priceRange, 
-        propertyImage, agentInformation } = PropertyData;
+        propertyImage, agentInformation, location } = PropertyData;
     const axios = useAxios();
     const navigate = useNavigate();
-    const location = useLocation();
+    const gate = useLocation();
     const [openModal, setOpenModal] = useState(false);
     const { user } = useAuth();
     const [,refetch] = useWishList();
@@ -26,6 +26,7 @@ const PropertyButton = ({ PropertyData }) => {
                 email: user.email,
                 propertyTitle,
                 propertyImage,
+                location,
                 agentInformation,
                 priceRange
             }
@@ -60,7 +61,7 @@ const PropertyButton = ({ PropertyData }) => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     //   send the user to the login page
-                    navigate('/login', { state: { from: location } })
+                    navigate('/login', { state: { from: gate } })
                 }
             });
         }
