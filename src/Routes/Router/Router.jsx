@@ -11,6 +11,8 @@ import Contact from "../../Pages/Home/Contact";
 import Properties from "../../Pages/Properties/Properties";
 import PropertyDetails from "../../Pages/Properties/PropertyDetails/PropertyDetails";
 import DashboardLayout from "../../LayOut/DashboardLayout";
+import PrivateRoutes from "../PrivateRoutes";
+import UserProfile from "../../Pages/Dashboard/UserProfile";
 
 
 
@@ -26,11 +28,16 @@ const router = createBrowserRouter([
             },
             {
                 path: 'all-properties',
-                element:<Properties></Properties>
+                element: <PrivateRoutes>
+                    <Properties></Properties>
+                </PrivateRoutes>
             },
             {
                 path: 'property-details/:id',
-                element: <PropertyDetails></PropertyDetails>,
+                element: <PrivateRoutes>
+                    <PropertyDetails>
+                    </PropertyDetails>
+                </PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
             },
             {
@@ -45,11 +52,21 @@ const router = createBrowserRouter([
     },
     {
         path: '/login',
-        element:<Login></Login>
+        element: <Login></Login>
     },
     {
         path: 'dashboard',
-        element:<DashboardLayout></DashboardLayout>
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                index: true,
+                element: <DashboardLayout></DashboardLayout>
+            },
+            {
+                path: 'my-profile',
+                element: <UserProfile></UserProfile>
+            }
+        ]
     }
 ]);
 

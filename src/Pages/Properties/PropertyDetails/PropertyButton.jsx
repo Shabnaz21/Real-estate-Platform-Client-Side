@@ -15,7 +15,7 @@ propertyImage } = PropertyData;
     const location = useLocation();
     const [openModal, setOpenModal] = useState(false);
     const { user } = useAuth();
-    const [refetch] = useWishList();
+    const [,refetch] = useWishList();
     console.log(user);
 
     const handleAddToCart = () => {
