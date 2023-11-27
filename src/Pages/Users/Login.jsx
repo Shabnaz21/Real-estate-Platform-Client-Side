@@ -12,6 +12,8 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const from = location.state?.from?.pathname || '/';
+
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -33,7 +35,7 @@ const Login = () => {
                 console.log(LoggedInUser);
 
                 // navigate
-                navigate(location?.state ? location?.state : '/')
+                navigate(from, { replace: true });
             })
 
 

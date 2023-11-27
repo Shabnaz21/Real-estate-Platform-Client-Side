@@ -10,6 +10,7 @@ import Login from "../../Pages/Users/Login";
 import Contact from "../../Pages/Home/Contact";
 import Properties from "../../Pages/Properties/Properties";
 import PropertyDetails from "../../Pages/Properties/PropertyDetails/PropertyDetails";
+import DashboardLayout from "../../LayOut/DashboardLayout";
 
 
 
@@ -24,16 +25,16 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/all-properties',
+                path: 'all-properties',
                 element:<Properties></Properties>
             },
             {
-                path: '/property-details/:id',
+                path: 'property-details/:id',
                 element: <PropertyDetails></PropertyDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
             },
             {
-                path: '/contact',
+                path: 'contact',
                 element: <Contact></Contact>
             }
         ]
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
     {
         path: '/login',
         element:<Login></Login>
+    },
+    {
+        path: 'dashboard',
+        element:<DashboardLayout></DashboardLayout>
     }
 ]);
 

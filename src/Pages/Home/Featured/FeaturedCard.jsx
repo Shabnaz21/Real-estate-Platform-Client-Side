@@ -2,7 +2,6 @@ import { FaArrowRight } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
 
 const FeaturedCard = ({ properties }) => {
     const {_id, propertyTitle, priceRange, propertyImage, location} = properties;
@@ -41,7 +40,5 @@ const FeaturedCard = ({ properties }) => {
         </>
     );
 };
-FeaturedCard.propTypes = {
-    properties: PropTypes.object, 
-}
+
 export default FeaturedCard;

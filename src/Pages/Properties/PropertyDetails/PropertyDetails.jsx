@@ -14,7 +14,7 @@ const PropertyDetails = () => {
             </Helmet>
             <section className="container mx-auto mt-10 mb-16">
                 <div>
-                    <div className='w-full md:h-[80vh] overflow-hidden rounded-xl'>
+                    <div className='w-full md:h-[70vh] overflow-hidden rounded-xl'>
                         <img
                             className='object-cover w-full'
                             src={propertiesData.propertyImage}
@@ -28,7 +28,7 @@ const PropertyDetails = () => {
                     ></PropertyInfo>
                     <div className='col-span-3' >
                         <AgnetInfo PropertyData={propertiesData} />
-                        <PropertyButton></PropertyButton>
+                        <PropertyButton PropertyData={propertiesData}></PropertyButton>
                     </div>
                    
                 </div>

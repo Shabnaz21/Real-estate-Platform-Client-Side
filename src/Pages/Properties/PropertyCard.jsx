@@ -3,7 +3,6 @@ import { FaRegHeart } from 'react-icons/fa';
 import { IoLocationOutline, IoPricetag } from 'react-icons/io5';
 import { MdVerified } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 const PropertyCard = ({ property }) => {
     const { _id, propertyImage, priceRange, propertyTitle, agentInformation, location } = property;
@@ -54,7 +53,5 @@ const PropertyCard = ({ property }) => {
         </div>
     );
 };
-PropertyCard.propTypes = {
-    property: PropTypes.object,
-}
+
 export default PropertyCard;
