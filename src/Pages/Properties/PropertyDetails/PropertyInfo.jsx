@@ -1,4 +1,3 @@
-import { Avatar } from "flowbite-react";
 import { FaBed, FaHome, FaPencilRuler } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { IoLocationOutline, IoPricetag } from "react-icons/io5";

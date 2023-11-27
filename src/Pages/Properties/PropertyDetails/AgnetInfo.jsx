@@ -1,6 +1,7 @@
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const AgnetInfo = ({ PropertyData }) => {
+    const { agentInformation } = PropertyData;
     return (
         <>
         <div className="px-2 py-20 mt-16 flex flex-col 
@@ -10,14 +11,14 @@ const AgnetInfo = ({ PropertyData }) => {
             border-red-500 rounded-full shadow-[5px_5px_0_0_rgba(0,0,0,1)]
              shadow-red-600/100 
               bg-red-500  text-red-500  h-24 w-24 "
-                    src={PropertyData?.agentInformation?.agentImage} alt={PropertyData?.agentInformation?.agentName} />
+                    src={agentInformation?.agentImage} alt={agentInformation?.agentName} />
                 
                 <div className='space-y-2 mb-5'>
                     <h2 className="text-2xl text-gray-500 font-bold mt-4">
-                        {PropertyData?.agentInformation?.agentName}
+                        {agentInformation?.agentName}
                     </h2>
-                    <p> {PropertyData?.agentInformation?.agentEmail}</p>
-                    <p className='text-lg font-semibold' > {PropertyData?.agentInformation?.agentPhone}</p>
+                    <p> {agentInformation?.agentEmail}</p>
+                    <p className='text-lg font-semibold' > {agentInformation?.agentPhone}</p>
                 </div>
                 <ul className="flex flex-row mt-2 text-2xl text-red-600">
                     <li className="mx-2">

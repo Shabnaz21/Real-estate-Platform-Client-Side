@@ -9,7 +9,7 @@ import useWishList from "../../../Hooks/useWishList";
 
 const PropertyButton = ({ PropertyData }) => {
     const { _id, propertyTitle, priceRange, 
-propertyImage } = PropertyData;
+        propertyImage, agentInformation } = PropertyData;
     const axios = useAxios();
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,6 +26,7 @@ propertyImage } = PropertyData;
                 email: user.email,
                 propertyTitle,
                 propertyImage,
+                agentInformation,
                 priceRange
             }
             axios.post('/wishlist', wishlist)

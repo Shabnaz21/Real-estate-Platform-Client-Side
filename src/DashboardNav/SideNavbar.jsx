@@ -41,7 +41,10 @@ const SideNavbar = () => {
                                             <NavLink to='/dashboard/my-profile'><Dropdown.Item>
                                                 My Profile
                                             </Dropdown.Item> </NavLink>
-                                            <Dropdown.Item>Wishlist</Dropdown.Item>
+                                            <NavLink to='/dashboard/wishlist'>
+                                                <Dropdown.Item>Wishlist</Dropdown.Item>
+                                            </NavLink>
+                                          
                                             <Dropdown.Item>Property Bought</Dropdown.Item>
                                         </Dropdown>
                                     </span>

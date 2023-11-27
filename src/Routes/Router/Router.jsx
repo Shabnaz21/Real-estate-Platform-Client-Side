@@ -12,7 +12,8 @@ import Properties from "../../Pages/Properties/Properties";
 import PropertyDetails from "../../Pages/Properties/PropertyDetails/PropertyDetails";
 import DashboardLayout from "../../LayOut/DashboardLayout";
 import PrivateRoutes from "../PrivateRoutes";
-import UserProfile from "../../Pages/Dashboard/UserProfile";
+import UserProfile from "../../Pages/Dashboard/user/UserProfile";
+import Wishlist from "../../Pages/Dashboard/user/Wishlist";
 
 
 
@@ -65,6 +66,9 @@ const router = createBrowserRouter([
             {
                 path: 'my-profile',
                 element: <UserProfile></UserProfile>
+            }, {
+                path: 'wishlist',
+                element:<Wishlist></Wishlist>
             }
         ]
     }
