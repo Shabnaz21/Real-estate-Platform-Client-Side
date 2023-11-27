@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxios from "../../../Hooks/useAxios";
+import useWishList from "../../../Hooks/useWishList";
 
 
 const PropertyButton = ({ PropertyData }) => {
@@ -14,6 +15,7 @@ propertyImage } = PropertyData;
     const location = useLocation();
     const [openModal, setOpenModal] = useState(false);
     const { user } = useAuth();
+    const [refetch] = useWishList();
     console.log(user);
 
     const handleAddToCart = () => {
@@ -26,19 +28,20 @@ propertyImage } = PropertyData;
                 propertyImage,
                 priceRange
             }
-                axios.post('/carts', wishlist)
+            axios.post('/wishlist', wishlist)
                 .then(res => {
                     console.log(res.data)
                     if (res.data.insertedId) {
                         Swal.fire({
-                            position: "top-end",
+                            position: "center",
                             icon: "success",
-                            title: `${name} added to your cart`,
+                            title: `${propertyTitle} added to your Wishlist`,
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        // // refetch cart to update the cart items count
-                        // refetch();
+
+                        // refetch cart to update the cart items count
+                        refetch();
                     }
 
                 })
