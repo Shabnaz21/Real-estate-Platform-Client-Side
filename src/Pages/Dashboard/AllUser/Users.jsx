@@ -3,6 +3,7 @@ import useAxios from "../../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { IoPeopleCircleOutline } from "react-icons/io5";
 const Users = () => {
     const axiosSecure = useAxios();
     const { data: users = [], refetch } = useQuery({
@@ -26,9 +27,48 @@ const Users = () => {
                         timer: 1500
                     });
                 }
-            })
+            }).catch((error) => {
+                console.error('Error marking user as admin:', error);
+            });
     }
+    const handleMarkAsAgent = (user) => {
+        axiosSecure
+            .patch(`/users/agent/${user._id}`)
+            .then((res) => {
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${user.name} marked as Agent!`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error('Error marking user as agent:', error);
+            });
+    };
 
+    const handleMarkAsFraud = (user) => {
+        axiosSecure.patch(`/users/fraud/${user._id}`)
+            .then((res) => {
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${user.name} marked as Fraud!`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error('Error marking user as fraud:', error);
+            });
+    };
     const handleDeleteUser = user => {
         Swal.fire({
             title: "Are you sure?",
@@ -106,11 +146,11 @@ const Users = () => {
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-4">
                                         <div><img src={user.image} alt={user.name} className="w-16 h-16 rounded" /></div>
-                                        <div className="font-bold font-lg">{user.name}</div>
+                                        <div className="font-bold text-md">{user.name}</div>
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">{user.email}</td>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4 font-bold text-[16px]">
                                     {user.role === 'admin' ? 'Admin' : <button
                                         onClick={() => handleMakeAdmin(user)}
                                         className="py-2.5 px-5 me-2 mb-2 text-sm font-medium
@@ -123,8 +163,38 @@ const Users = () => {
                                     </button>}
                                 
                                 </td>
-                                <td className="px-6 py-4">MAKE AGENT</td>
-                                <td className="px-6 py-4">MARK AS FRAUD</td>
+                                <td className="px-6 py-4 font-bold text-[16px]">
+                                    {user.role === 'agent' ? (
+                                        'AGENT'
+                                    ) : (
+                                        <button
+                                            onClick={() => handleMarkAsAgent(user)}
+                                            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium
+                                     text-white focus:outline-none
+                                      bg-[#b8a0a0] rounded-lg border border-gray-200
+                                      hover:bg-red-600  focus:z-10 focus:ring-4
+                                     focus:ring-gray-200"
+                                        >
+                                                <IoPeopleCircleOutline className="text-white 
+                                               text-2xl"></IoPeopleCircleOutline>
+                                        </button>
+                                    )}
+                                </td>
+                                <td className="px-6 py-4 font-bold text-red-500 text-[16px]">  {user.role === 'fraud' ? (
+                                    'FRAUD'
+                                ) : (
+                                    <button
+                                        onClick={() => handleMarkAsFraud(user)}
+                                        className="py-2.5 px-5 me-2 mb-2 text-sm font-medium
+                                     text-white focus:outline-none
+                                      bg-red-500 rounded-lg border border-gray-200
+                                      hover:bg-red-600  focus:z-10 focus:ring-4
+                                     focus:ring-gray-200"
+                                    >
+                                        Mark as Fraud
+                                    </button>
+                                )}
+                                </td>
                                 <td className="flex items-center px-6 py-10 ">
                                     <button type="button"
                                         onClick={() => handleDeleteUser(user)}
