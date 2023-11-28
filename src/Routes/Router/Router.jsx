@@ -12,10 +12,11 @@ import Properties from "../../Pages/Properties/Properties";
 import PropertyDetails from "../../Pages/Properties/PropertyDetails/PropertyDetails";
 import DashboardLayout from "../../LayOut/DashboardLayout";
 import PrivateRoutes from "../PrivateRoutes";
-import UserProfile from "../../Pages/Dashboard/user/UserProfile";
+import UserProfile from "../../Pages/Dashboard/UserProfile";
 import Wishlist from "../../Pages/Dashboard/user/Wishlist";
 import Offer from "../../Pages/Dashboard/user/Offer";
 import Users from "../../Pages/Dashboard/AllUser/Users";
+import Dashboard from "../../Pages/Dashboard/Dashboard";
 
 
 
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DashboardLayout></DashboardLayout>
+                element: <Dashboard></Dashboard>
             },
             {
                 path: 'my-profile',
@@ -73,17 +74,17 @@ const router = createBrowserRouter([
             },
             {
                 path: 'wishlist',
-                element:<Wishlist></Wishlist>
+                element: <Wishlist></Wishlist>
             },
             {
-                path: 'make-an-offer/:id', 
+                path: 'make-an-offer/:id',
                 element: <Offer></Offer>,
-                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)  
+                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
             },
             // admin
             {
                 path: 'users',
-                element:<Users></Users>
+                element: <Users></Users>
             }
         ]
     }

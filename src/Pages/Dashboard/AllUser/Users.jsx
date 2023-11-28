@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useAxios from "../../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 const Users = () => {
     const axiosSecure = useAxios();
@@ -12,6 +12,23 @@ const Users = () => {
             return res.data;
         }
     })
+    const handleMakeAdmin = user => {
+        axiosSecure.patch(`/users/admin/${user._id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    }
+
     const handleDeleteUser = user => {
         Swal.fire({
             title: "Are you sure?",
@@ -21,7 +38,8 @@ const Users = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
+        })
+            .then((result) => {
             if (result.isConfirmed) {
 
                 axiosSecure.delete(`/users/${user._id}`)
@@ -92,7 +110,19 @@ const Users = () => {
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">{user.email}</td>
-                                <td className="px-6 py-4">admin</td>
+                                <td className="px-6 py-4">
+                                    {user.role === 'admin' ? 'Admin' : <button
+                                        onClick={() => handleMakeAdmin(user)}
+                                        className="py-2.5 px-5 me-2 mb-2 text-sm font-medium
+                                     text-gray-900 focus:outline-none
+                                      bg-[#0E7490] rounded-lg border border-gray-200
+                                      hover:bg-[#0E7490]  focus:z-10 focus:ring-4
+                                     focus:ring-gray-200">
+                                        <FaUsers className="text-white hover:text-black 
+                                        text-2xl"></FaUsers>
+                                    </button>}
+                                
+                                </td>
                                 <td className="px-6 py-4">MAKE AGENT</td>
                                 <td className="px-6 py-4">MARK AS FRAUD</td>
                                 <td className="flex items-center px-6 py-10 ">

@@ -1,15 +1,33 @@
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import useAuth from "../../../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
+import useProfile from "../../Hooks/UseProfile";
+
 
 const UserProfile = () => {
-    const { loading, user } = useAuth();
-    console.log(user);
+    const [profile] = useProfile();
+    console.log([profile]);
+    const { loading } = useAuth();
     
+
     if (loading) {
         return (<div className="flex place-content-center">
             <span className="loading loading-dots  loading-lg"></span>
         </div>)
     }
+    if (!profile || !profile[0]) {
+       
+        return <div className="container mx-auto">
+            <div className="flex place-content-center w-9/12 mt-32 mx-auto">
+                <img src="https://i.ibb.co/pvfdMWt/website-error-6333614-5230174.png"
+                    className="w-[800px]"
+                    alt="Sorry! Error" />
+
+            </div>
+        </div>;
+    }
+
+    const user = profile[0];
+
     return (
         <section className='container mx-auto'>
             <header className="px-2 py-4 mt-16 flex flex-col justify-center items-center text-center">
@@ -17,15 +35,19 @@ const UserProfile = () => {
                  border-red-600 rounded-full shadow-[5px_5px_0_0_rgba(0,0,0,1)]
                   shadow-red-600/100  bg-red-50 
                    text-red-600 h-24 w-24 !h-48 !w-48"
-                    src={user.photoURL} alt={user.displayName} />
+                    src={user.image} alt={user.name} />
                 <h1 className="text-2xl text-gray-500 font-bold mt-5">
-                    {user.displayName}
+                    {user.name}
                 </h1>
                 <h2 className="text-base mt-2  md:text-xl text-gray-500 font-semibold">
                     {user.email}
                 </h2>
-
-                {/* <p>role</p> */}
+                {
+                    user.role ? <p className="text-base mt-2  md:text-lg text-gray-500 font-semibold">
+                        Role: {user.role}
+                    </p> :
+                        <></>
+                }
 
                 <ul className="flex flex-row mt-5 text-2xl text-red-600">
                     <li className="mx-2">

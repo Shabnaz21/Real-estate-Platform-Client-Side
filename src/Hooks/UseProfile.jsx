@@ -4,18 +4,18 @@ import useAuth from "./useAuth";
 import useAxios from "./useAxios";
 
 
-const useWishList = () => {
+const useProfile = () => {
     const axios = useAxios();
     const { user } = useAuth();
-    const { refetch, data: cart = [] } = useQuery({
-        queryKey: ['cart', user?.email],
+    const { refetch, data: users = [] } = useQuery({
+        queryKey: ['users', user?.email],
         queryFn: async () => {
-            const res = await axios.get(`/wishlist?userEmail=${user?.email}`);
+            const res = await axios.get(`/users?email=${user?.email}`);
             return res.data;
         }
     })
 
-    return [cart, refetch]
+    return [users, refetch]
 };
 
-export default useWishList;
+export default useProfile;

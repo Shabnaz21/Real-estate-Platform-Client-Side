@@ -20,9 +20,10 @@ const Nav = () => {
             }
         >Home
         </NavLink> </li>
-        <li><NavLink to='/about'
+        {/* ToDO:add link & change color */}
+        <li><NavLink 
             className={({ isActive }) =>
-                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
+                isActive ? 'md:text-lg' : 'md:text-lg'
             }
         >About</NavLink></li>
 
@@ -31,14 +32,16 @@ const Nav = () => {
                 isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
         > All Properties </NavLink> </li>
-        <li><NavLink to='/blog'
+        {/* ToDO:add link & change color */}
+        <li><NavLink 
             className={({ isActive }) =>
-                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
+                isActive ? ' md:text-lg' : 'md:text-lg'
             }
         >Blog</NavLink></li>
-        <li><NavLink to='/news'
+        {/* ToDO:add link & change color */}
+        <li><NavLink 
             className={({ isActive }) =>
-                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
+                isActive ? ' md:text-lg' : 'md:text-lg'
             }
         >News</NavLink></li>
         <li><NavLink to='/contact'
@@ -46,6 +49,11 @@ const Nav = () => {
                 isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
             }
         >Contact</NavLink></li>
+        <li><NavLink to='/dashboard'
+            className={({ isActive }) =>
+                isActive ? 'text-rose-600 md:text-lg' : 'md:text-lg'
+            }
+        >Dashboard</NavLink></li>
     </>
 
     return (
@@ -101,8 +109,8 @@ const Nav = () => {
                                             <span className="block text-sm">{user.displayName}</span>
                                             <span className="block truncate text-sm font-medium">{user.email}</span>
                                         </Dropdown.Header>
-                                        <Link to='/dashboard'><Dropdown.Item>
-                                            Dashboard
+                                        <Link to='/dashboard/my-profile'><Dropdown.Item>
+                                            My Profile
                                         </Dropdown.Item> </Link>
                                         
                                         <Dropdown.Item>Settings</Dropdown.Item>
