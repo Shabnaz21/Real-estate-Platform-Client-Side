@@ -5,10 +5,11 @@ import { BiStoreAlt } from "react-icons/bi";
 import { AiOutlineProfile } from "react-icons/ai";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
+import useAdmin from "../Hooks/useAdmin";
 
 const SideNavbar = () => {
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <>

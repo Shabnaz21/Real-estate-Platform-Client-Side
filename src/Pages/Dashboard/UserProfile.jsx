@@ -1,6 +1,7 @@
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import useProfile from "../../Hooks/UseProfile";
+import { Spinner } from "flowbite-react";
 
 
 const UserProfile = () => {
@@ -9,7 +10,9 @@ const UserProfile = () => {
     // loading
     if (loading) {
         return (<div className="flex mx-56 place-content-center">
-            <span className="loading loading-dots  loading-lg"></span>
+            return <div className="flex place-content-center">
+                <Spinner aria-label="Extra large spinner example" size="xl" />
+            </div>
         </div>)
     }
 

@@ -4,6 +4,7 @@ import { FaHome } from "react-icons/fa";
 import PropertyCard from "./PropertyCard";
 import useProperties from "../../Hooks/useProperties";
 import useAuth from "../../Hooks/useAuth";
+import { Spinner } from "flowbite-react";
 
 
 const Properties = () => {
@@ -12,7 +13,9 @@ const Properties = () => {
 
     // loading
     if (loading) {
-        return <span className="loading loading-dots text-center loading-lg"></span>
+        return <div className="flex place-content-center">
+            <Spinner aria-label="Extra large spinner example" size="xl" />
+        </div>
     }
     
     return (

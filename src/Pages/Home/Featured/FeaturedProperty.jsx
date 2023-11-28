@@ -1,5 +1,5 @@
 import SectionTitle from "../../../Components/SectionTitle";
-import { Button } from "flowbite-react";
+import { Button, Spinner } from "flowbite-react";
 import { Link } from "react-router-dom";
 import FeaturedCard from "./FeaturedCard";
 import useProperties from "../../../Hooks/useProperties";
@@ -15,7 +15,9 @@ const FeaturedProperty = () => {
     
     // loading
     if (loading) {
-        return <span className="loading loading-dots text-center loading-lg"></span>
+        return <div className="flex place-content-center">
+            <Spinner aria-label="Extra large spinner example" size="xl" />
+        </div>
     }
 
     return (

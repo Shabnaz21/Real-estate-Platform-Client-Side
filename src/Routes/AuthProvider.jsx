@@ -8,6 +8,7 @@ import {
 
 import { createContext, useEffect, useState } from "react";
 import app from "../Firebase/firebase.config";
+import useAxios from "../Hooks/useAxios";
 
 
 
@@ -19,6 +20,7 @@ const githubProvider = new GithubAuthProvider();
 
 
 const AuthProvider = ({ children }) => {
+    const axios = useAxios();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(true);
@@ -62,8 +64,20 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const outsider = onAuthStateChanged(auth, currentUser => {
-            const userEmail = currentUser?.email || user?.email;
-            const loggedUser = { email: userEmail }
+
+            if (currentUser) {
+                //get token
+                const userInfo = { email: currentUser.email }
+                axios.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                    }
+                })
+            } else {
+                //TODO :remove token
+                localStorage.removeItem('access-token');
+            }
             setUser(currentUser);
             setLoading(false);
 

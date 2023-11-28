@@ -18,6 +18,7 @@ import Offer from "../../Pages/Dashboard/user/Offer";
 import Users from "../../Pages/Dashboard/AdminPanel/MangeUsers/Users";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import ManageProperties from "../../Pages/Dashboard/AdminPanel/ManageProperties/ManageProperties";
+import AdminRoute from "../AdminRoute";
 
 
 
@@ -85,10 +86,12 @@ const router = createBrowserRouter([
             // admin
             {
                 path: 'users',
-                element: <Users></Users>
+                element: <AdminRoute><Users></Users></AdminRoute>
             }, {
                 path: 'manage-properties',
-                element:<ManageProperties></ManageProperties>
+                element: <AdminRoute>
+                    <ManageProperties></ManageProperties>
+                </AdminRoute>
             }
         ]
     }

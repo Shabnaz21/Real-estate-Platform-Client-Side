@@ -1,17 +1,24 @@
 import { Helmet } from "react-helmet-async";
-import useAxios from "../../../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { IoPeopleCircleOutline } from "react-icons/io5";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+
+
 const Users = () => {
-    const axiosSecure = useAxios();
+    const axiosSecure = useAxiosSecure();
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users');
-            return res.data;
+            const res = await axiosSecure.get('/users', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
+            });
+            return res.data;   
         }
+
     })
     const handleMakeAdmin = user => {
         axiosSecure.patch(`/users/admin/${user._id}`)
