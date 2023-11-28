@@ -5,15 +5,15 @@ import SideNavbar from "../DashboardNav/SideNavbar";
 const DashboardLayout = () => {
     return (
         <>
-            <div className='relative min-h-screen md:flex'>
+        <div className='relative min-h-screen md:flex flex-row'>
              <SideNavbar></SideNavbar>
                 <div className='flex-1  md:ml-64'>
-                    <div className='p-5'>
+                    <div className='p-5'> 
                         {/* Outlet for dynamic contents */}
-                        <Outlet></Outlet>
+                         <Outlet></Outlet>
                     </div>
                 </div>
-            </div> 
+            </div>  
         </>
     );
 };

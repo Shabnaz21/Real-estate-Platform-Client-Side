@@ -15,6 +15,7 @@ import PrivateRoutes from "../PrivateRoutes";
 import UserProfile from "../../Pages/Dashboard/user/UserProfile";
 import Wishlist from "../../Pages/Dashboard/user/Wishlist";
 import Offer from "../../Pages/Dashboard/user/Offer";
+import Users from "../../Pages/Dashboard/AllUser/Users";
 
 
 
@@ -77,8 +78,12 @@ const router = createBrowserRouter([
             {
                 path: 'make-an-offer/:id', 
                 element: <Offer></Offer>,
-                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
-                
+                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)  
+            },
+            // admin
+            {
+                path: 'users',
+                element:<Users></Users>
             }
         ]
     }

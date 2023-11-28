@@ -13,11 +13,11 @@ const SocialLogin = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                console.log(result.user.email);
-
+                console.log(result.user);
                 const userInfo = {
                     email: result.user?.email,
-                    name: result.user?.displayName
+                    name: result.user?.displayName,
+                    image: result.user?.photoURL
                 }
                 //entry database 
                 axios.post('/users', userInfo)
@@ -47,7 +47,8 @@ const SocialLogin = () => {
 
                 const userInfo = {
                     email: result.user?.email,
-                    name: result.user?.displayName
+                    name: result.user?.displayName,
+                    image: result.user?.photoURL
                 }
                 //entry database 
                 axios.post('/users', userInfo)

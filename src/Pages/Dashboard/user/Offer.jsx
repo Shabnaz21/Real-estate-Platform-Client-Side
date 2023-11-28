@@ -5,7 +5,7 @@ import useAuth from "../../../Hooks/useAuth";
 const Offer = () => {
     const { user } = useAuth();
     const DealData = useLoaderData();
-    const { _id, propertyTitle, propertyImage, location, agentInformation } = DealData;
+    const { propertyTitle, propertyImage, location, agentInformation } = DealData;
     console.log(DealData);
     return (
         <section className='container mx-auto m-10'>

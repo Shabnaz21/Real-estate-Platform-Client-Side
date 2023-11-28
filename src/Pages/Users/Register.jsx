@@ -39,7 +39,8 @@ const Register = () => {
                         //entry database 
                         const userInfo = {
                             name: name,
-                            email: email
+                            email: email,
+                            image: photo
                         }
                         axios.post('/users', userInfo)
                             .then(res => {
