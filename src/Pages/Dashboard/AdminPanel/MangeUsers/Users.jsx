@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import useAxios from "../../../Hooks/useAxios";
+import useAxios from "../../../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -80,21 +80,21 @@ const Users = () => {
             confirmButtonText: "Yes, delete it!"
         })
             .then((result) => {
-            if (result.isConfirmed) {
+                if (result.isConfirmed) {
 
-                axiosSecure.delete(`/users/${user._id}`)
-                    .then(res => {
-                        if (res.data.deletedCount > 0) {
-                            refetch();
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
-                            });
-                        }
-                    })
-            }
-        });
+                    axiosSecure.delete(`/users/${user._id}`)
+                        .then(res => {
+                            if (res.data.deletedCount > 0) {
+                                refetch();
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                });
+                            }
+                        })
+                }
+            });
     }
     return (
         <section className='container mx-auto m-10'>
@@ -117,7 +117,7 @@ const Users = () => {
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" className="p-4">
-                                    
+
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     User Info
@@ -126,13 +126,13 @@ const Users = () => {
                                     User Email
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Make Admin 
+                                    Make Admin
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Make Agent 
+                                    Make Agent
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Mark as Fraud 
+                                    Mark as Fraud
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Action
@@ -142,7 +142,7 @@ const Users = () => {
                         <tbody>
                             {users.map((user, index) => <tr key={user._id}
                             >
-                                <td className="w-4 p-4">{index +1}</td>
+                                <td className="w-4 p-4">{index + 1}</td>
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-4">
                                         <div><img src={user.image} alt={user.name} className="w-16 h-16 rounded" /></div>
@@ -161,7 +161,7 @@ const Users = () => {
                                         <FaUsers className="text-white hover:text-black 
                                         text-2xl"></FaUsers>
                                     </button>}
-                                
+
                                 </td>
                                 <td className="px-6 py-4 font-bold text-[16px]">
                                     {user.role === 'agent' ? (
@@ -175,7 +175,7 @@ const Users = () => {
                                       hover:bg-red-600  focus:z-10 focus:ring-4
                                      focus:ring-gray-200"
                                         >
-                                                <IoPeopleCircleOutline className="text-white 
+                                            <IoPeopleCircleOutline className="text-white 
                                                text-2xl"></IoPeopleCircleOutline>
                                         </button>
                                     )}
@@ -205,8 +205,8 @@ const Users = () => {
                                         <FaTrashAlt className="text-red-600"></FaTrashAlt>
                                     </button>
                                 </td>
-                                </tr>
-                                )}
+                            </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

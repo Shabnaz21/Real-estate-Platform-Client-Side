@@ -15,8 +15,9 @@ import PrivateRoutes from "../PrivateRoutes";
 import UserProfile from "../../Pages/Dashboard/UserProfile";
 import Wishlist from "../../Pages/Dashboard/user/Wishlist";
 import Offer from "../../Pages/Dashboard/user/Offer";
-import Users from "../../Pages/Dashboard/AllUser/Users";
+import Users from "../../Pages/Dashboard/AdminPanel/MangeUsers/Users";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
+import ManageProperties from "../../Pages/Dashboard/AdminPanel/ManageProperties/ManageProperties";
 
 
 
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
                     <PropertyDetails>
                     </PropertyDetails>
                 </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5001/properties/${params.id}`)
             },
             {
                 path: 'contact',
@@ -79,12 +80,15 @@ const router = createBrowserRouter([
             {
                 path: 'make-an-offer/:id',
                 element: <Offer></Offer>,
-                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5001/wishlist/${params.id}`)
             },
             // admin
             {
                 path: 'users',
                 element: <Users></Users>
+            }, {
+                path: 'manage-properties',
+                element:<ManageProperties></ManageProperties>
             }
         ]
     }

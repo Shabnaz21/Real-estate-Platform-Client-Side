@@ -3,7 +3,7 @@
         "propertyTitle": "Luxurious Seaside Villa",
         "propertyImage": "https://images.pexels.com/photos/4508644/pexels-photo-4508644.jpeg",
         "propertyDescription": "Experience luxury living by the sea with this stunning villa. Featuring spacious interiors, panoramic ocean views, and a private beach access. Ideal for those seeking an opulent coastal retreat.",
-        "priceRange": 2500000,
+        "priceRange": "2500000 - 3500000",
         "agentInformation": {
             "agentName": "John Reynolds",
             "agentImage": "https://ntvb.tmsimg.com/assets/assets/33344_v9_bb.jpg",
@@ -27,7 +27,7 @@
         "propertyTitle": "Modern Downtown Loft",
         "propertyImage": "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-2889.jpg",
         "propertyDescription": "Discover urban living at its finest in this sleek and modern downtown loft. Open-concept design, floor-to-ceiling windows, and contemporary finishes create a stylish city retreat.",
-        "priceRange": 600000,
+        "priceRange": "600000-800000",
         "agentInformation": {
             "agentName": "James Rodriguez",
             "agentImage": "https://img.allfootballapp.com/www/M00/13/AF/720x-/-/-/rB8oyFwbmNmAc6X0AAF6QNcIkHs033.jpg",
@@ -51,7 +51,7 @@
         "propertyTitle": "Charming Suburban Home",
         "propertyImage": "https://img.freepik.com/free-photo/way-white-house_1162-117.jpg",
         "propertyDescription": "Experience suburban comfort in this charming family home. Cozy interiors, a spacious backyard, and a quiet neighborhood make it an ideal choice for a growing family.",
-        "priceRange": 450000,
+        "priceRange": "450000-600000",
         "agentInformation": {
             "agentName": "Michael Turner",
             "agentImage": "https://i.ibb.co/MhbQSn9/23526a2e6122503e3ec30b0d1193de2017-14-gina-rodriguez-rvertical-w330.webp",
@@ -75,7 +75,7 @@
         "propertyTitle": "City View Condo",
         "propertyImage": "https://img.freepik.com/free-photo/city-skyline-with-residential-district_1359-108.jpg",
         "propertyDescription": "Enjoy breathtaking city views from this modern condominium. Sleek design, high-end finishes, and a central location make it perfect for urban professionals seeking a sophisticated lifestyle.",
-        "priceRange": 8500000,
+        "priceRange": "8500000-10000000",
         "agentInformation": {
             "agentName": "Sophia Lee",
             "agentImage": "https://i0.wp.com/alcogal.com/wp-content/uploads/2014/10/Sophia-Lee.jpeg",

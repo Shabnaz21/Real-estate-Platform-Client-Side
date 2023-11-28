@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAxios from "./useAxios";
-
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "./useAuth";
 
 
 const useProperties = () => {
     const axios = useAxios();
-    const [properties, setProperties] = useState([]);
     const [loading, SetLoading] = useState(true);
    
-
-    const url = `/properties`
-    useEffect(() => {
-        axios.get(url)
-            .then(data =>
-                setProperties(data?.data)
-            )
-    }, [url, axios])
+    const { user } = useAuth();
+    const { refetch, data: properties = [] } = useQuery({
+        queryKey: ['properties', user?.email],
+        queryFn: async () => {
+            const res = await axios.get(`/properties`);
+            return res.data;
+        }
+    })
     
-    return [properties,loading]
+    return [properties,loading,refetch ]
 };
 
 export default useProperties;

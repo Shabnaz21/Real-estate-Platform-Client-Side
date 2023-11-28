@@ -5,15 +5,14 @@ import useProfile from "../../Hooks/UseProfile";
 
 const UserProfile = () => {
     const [profile] = useProfile();
-    console.log([profile]);
     const { loading } = useAuth();
-    
-
+    // loading
     if (loading) {
-        return (<div className="flex place-content-center">
+        return (<div className="flex mx-56 place-content-center">
             <span className="loading loading-dots  loading-lg"></span>
         </div>)
     }
+
     if (!profile || !profile[0]) {
        
         return <div className="container mx-auto">
@@ -44,7 +43,7 @@ const UserProfile = () => {
                 </h2>
                 {
                     user.role ? <p className="text-base mt-2  md:text-lg text-gray-500 font-semibold">
-                        Role: {user.role}
+                        Role: <span className="uppercase">{user.role}</span>
                     </p> :
                         <></>
                 }
