@@ -11,7 +11,7 @@ const AdminRoute = (children) => {
     const location = useLocation();
 
     if (loading || isAdminLoading) {
-       return <div className="flex place-content-center">
+       return <div className="flex place-content-center mt-28">
             <Spinner aria-label="Extra large spinner example" size="xl" />
         </div>
     }

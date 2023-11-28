@@ -2,6 +2,7 @@ import useAxios from "../../../../Hooks/useAxios";
 import Swal from "sweetalert2";
 import { MdVerified } from "react-icons/md";
 import { useState } from "react";
+import { Avatar, Checkbox, Table } from "flowbite-react";
 
 const ManagePropertiesRow = ({ properties }) => {
     const axiosSecure = useAxios();
@@ -29,38 +30,32 @@ const ManagePropertiesRow = ({ properties }) => {
 
     return (
         <>
-            <tr className=" bg-white border-b
-                          hover:bg-gray-50
-                        ">
-                <td className="w-4 p-4">
-                    <div className="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100
-                                     border-gray-300 rounded" />
-                        <label className="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <td scope="col" className="px-6 py-3">
-                    <div className="flex items-center gap-4">
-                        <div><img src={propertyImage} alt={propertyTitle} className="w-20 h-20 rounded" /></div>
-                        <div className="font-bold text-md">{propertyTitle}</div>
-                    </div>
-                </td>
-                <td scope="col" className="px-6 py-3">
+            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                <Table.Cell>
+                    <Checkbox />
+                </Table.Cell>
+                <Table.Cell>
+                    <Avatar img={propertyImage} alt={propertyTitle} size="xl">
+                        <div className="font-bold font-lg">{propertyTitle}</div>
+                    </Avatar>
+                </Table.Cell>
+                <Table.Cell>
                     {location}
-                </td>
-                <td scope="col" className="px-6 py-3">
+                </Table.Cell>
+                <Table.Cell>
                     <div className="flex items-center gap-4">
-                        <div><img src={agentInformation?.agentImage} alt={agentInformation ?. agentName} className="w-16 h-16 rounded" /></div>
+                        <div><img src={agentInformation?.agentImage}
+                            alt={agentInformation?.agentName} className="w-16 h-16 rounded" /></div>
                         <div>
                             <div className="font-bold text-md">{agentInformation?.agentName}</div>
                             <div className="font-bold text-md">{agentInformation?.agentPhone}</div>
                         </div>
                     </div>
-                </td>
-                <td scope="col" className="px-6 py-3">
+                </Table.Cell>
+                <Table.Cell>
                     {priceRange}
-                </td>
-                <td scope="col" className="px-6 py-3">
+                </Table.Cell>
+                <Table.Cell>
                     {
                         status === 'pending' ? (
                             <button
@@ -75,13 +70,12 @@ const ManagePropertiesRow = ({ properties }) => {
                                 type="button"
                                 className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200"
                             >
-                            <MdVerified className="text-blue-600 text-lg"></MdVerified>
+                                <MdVerified className="text-blue-600 text-lg"></MdVerified>
                             </button>
                         )
                     }
-
-                </td>
-            </tr>
+                </Table.Cell>
+            </Table.Row>
         </>
     );
 };

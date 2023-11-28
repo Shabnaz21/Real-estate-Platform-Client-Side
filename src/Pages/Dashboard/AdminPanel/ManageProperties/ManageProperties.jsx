@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useProperties from "../../../../Hooks/useProperties";
 import ManagePropertiesRow from "./ManagePropertiesRow";
+import { Checkbox, Table } from "flowbite-react";
 
 const ManageProperties = () => {
     const [properties, refetch] = useProperties();
@@ -24,35 +25,23 @@ const ManageProperties = () => {
             </div>
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-10">
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" className="p-4">
-                                <div className="flex items-center">
-                                    <input id="checkbox-all-search" type="checkbox"
-                                        className="w-4 h-4 text-blue-600
-                                         bg-gray-100 border-gray-300 rounded" />
-                                    <label className="sr-only">checkbox</label>
-                                </div>
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Property Info
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Property Location
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Agent Info
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Price Rage
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Table hoverable>
+                    <Table.Head>
+                        <Table.HeadCell>
+                            <Checkbox />
+                        </Table.HeadCell>
+
+                        <Table.HeadCell>
+                            Property Info
+                        </Table.HeadCell>
+                        <Table.HeadCell>Property Location
+
+                        </Table.HeadCell>
+                        <Table.HeadCell>    Agent Info</Table.HeadCell>
+                        <Table.HeadCell> Price Rage</Table.HeadCell>
+                        <Table.HeadCell>ACTION</Table.HeadCell>
+                    </Table.Head>
+                    <Table.Body className="divide-y">
                         {
                             properties.map(item => <ManagePropertiesRow
                                 key={item._id}
@@ -60,11 +49,12 @@ const ManageProperties = () => {
                                 refetch={refetch}
                             ></ManagePropertiesRow>
 
-                            
-                                )
+
+                            )
                         }
-                    </tbody>
-                </table>
+                    </Table.Body>
+                </Table>
+              
             </div>
         
         </section>

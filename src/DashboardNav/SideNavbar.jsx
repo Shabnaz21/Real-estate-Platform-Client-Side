@@ -10,6 +10,7 @@ import useAdmin from "../Hooks/useAdmin";
 const SideNavbar = () => {
 
     const [isAdmin] = useAdmin();
+    console.log(isAdmin);
 
     return (
         <>
@@ -27,17 +28,9 @@ const SideNavbar = () => {
                     </div>
                     <div className="pb-6 mt-4 overflow-x-hidden overflow-y-auto">
                         <ul className="mb-8 text-sm">
-                            {/* <li
-                                className="flex items-center px-6 py-4 text-gray-300
-                                      hover:text-white">
-                                <span className="inline-block mr-3">
-                                    <MdDashboard className='text-xl' />
-                                </span>
-                                <span className='text-lg'>Dashboard</span>
-                            </li> */}
                             {
                                 isAdmin ?
-                                    <>
+                                    <li className="text-gray-300 text-xl m-2">
                                         <li className=" text-gray-300  space-y-3 mt-5  mb-5">  
                                             <NavLink to='/dashboard/my-profile'
                                                 className={({ isActive }) =>
@@ -77,25 +70,42 @@ const SideNavbar = () => {
                                             </NavLink>
                                            
                                         </li>  
-                                    </>
+                                    </li>
                                     :
                                     <>
-                                        <li>
-                                            <NavLink to='/dashboard/my-profile'>
+                                        <li className="text-gray-300 text-xl m-2">
+                                            <NavLink to='/dashboard/my-profile'
+                                                className={({ isActive }) =>
+                                                    isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                                }
+                                            >
                                                 <li className="mb-2 flex items-center gap-3">
                                                     <ImProfile ></ImProfile> My Profile
                                                 </li></NavLink>
-                                            <NavLink to='/dashboard/wishlist'>
+                                            <NavLink to='/dashboard/wishlist'
+                                                className={({ isActive }) =>
+                                                    isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                                }
+                                            >
                                                 <li className="mb-2 flex items-center gap-3">
                                                     <AiOutlineProfile />
                                                     Wishlist
                                                 </li>
                                             </NavLink>
-                                            <NavLink>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                                }
+                                            
+                                            >
                                                 <li className="mb-2 flex items-center gap-3">
                                                     <RiSecurePaymentLine /> Property Bought</li>
                                             </NavLink>
-                                            <NavLink>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                                }
+                                            >
                                                 <li className="mb-2 flex items-center gap-3">
                                                     <MdOutlineRateReview /> My Reviews</li>
                                             </NavLink>

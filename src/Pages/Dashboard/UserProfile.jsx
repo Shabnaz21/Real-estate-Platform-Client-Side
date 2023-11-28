@@ -6,6 +6,7 @@ import { Spinner } from "flowbite-react";
 
 const UserProfile = () => {
     const [profile] = useProfile();
+
     const { loading } = useAuth();
     // loading
     if (loading) {
@@ -27,8 +28,10 @@ const UserProfile = () => {
             </div>
         </div>;
     }
-
+console.log(profile);
     const user = profile[0];
+    console.log(user);
+
 
     return (
         <section className='container mx-auto'>

@@ -4,6 +4,7 @@ import useWishList from "../../../Hooks/useWishList";
 import WishlistRow from "./WishlistRow";
 import Swal from "sweetalert2";
 import useAxios from "../../../Hooks/useAxios";
+import { Checkbox, Table } from "flowbite-react";
 
 
 const Wishlist = () => {
@@ -66,38 +67,22 @@ const Wishlist = () => {
                 </div>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" className="p-4">
-                                <div className="flex items-center">
-                                    <input id="checkbox-all-search" type="checkbox"
-                                        className="w-4 h-4 text-blue-600
-                                         bg-gray-100 border-gray-300 rounded" />
-                                    <label className="sr-only">checkbox</label>
-                                </div>
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Property Info
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Location
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Agent Info
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Price
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Verification Status
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Table hoverable>
+                    <Table.Head>
+                        <Table.HeadCell>
+                            <Checkbox />
+                        </Table.HeadCell>
+                       
+                        <Table.HeadCell>
+                            Property Info
+                        </Table.HeadCell>
+                        <Table.HeadCell>Location</Table.HeadCell>
+                        <Table.HeadCell>    Agent Info</Table.HeadCell>
+                        <Table.HeadCell>PRICE</Table.HeadCell>
+                        <Table.HeadCell>VERIFICATION STATUS</Table.HeadCell>
+                        <Table.HeadCell>	ACTION</Table.HeadCell>
+                    </Table.Head>
+                    <Table.Body className="divide-y">
                         {
                             cart.map(item => <WishlistRow
                                 key={item._id}
@@ -105,8 +90,9 @@ const Wishlist = () => {
                                 handleDelete={handleDelete}
                             ></WishlistRow>)
                         }
-                    </tbody>
-                </table>
+                    </Table.Body>
+                </Table>
+                
             </div>
 
         </section>
