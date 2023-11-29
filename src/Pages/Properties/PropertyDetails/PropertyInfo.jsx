@@ -77,7 +77,9 @@ const PropertyInfo = ({ PropertyData }) => {
             <div>
                 <h3 className='text-2xl font-semibold font-poppins border-l-4 
              border-red-500 pl-2'>Give a Review:</h3>
-                <PropertyReview></PropertyReview>
+                <PropertyReview
+                    propertyName={propertyTitle}
+                ></PropertyReview>
             </div>
         </div>
     )
