@@ -47,8 +47,6 @@ const Wishlist = () => {
         });
     };
 
-
-    
     return (
         <section className='container mx-auto m-10'>
             <Helmet>

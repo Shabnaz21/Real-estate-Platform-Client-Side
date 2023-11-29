@@ -4,14 +4,12 @@ import { MdOutlineMailLock } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import useLogOut from '../../Hooks/useLogOut';
 
 const Nav = () => {
-    const { user, logOut } = useAuth();
-    const handleSignOut = () => {
-        logOut()
-            .then()
-            .catch()
-    }
+    const logOut = useLogOut();
+    const { user } = useAuth();
+ 
     const menus = <>
         <li><NavLink
             to="/"
@@ -115,7 +113,7 @@ const Nav = () => {
                                         
                                         <Dropdown.Item>Settings</Dropdown.Item>
                                         <Dropdown.Divider />
-                                        <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
+                                        <Dropdown.Item onClick={logOut}>Sign Out</Dropdown.Item>
                                     </Dropdown>
                                     <Navbar.Toggle />
                                 </div>

@@ -19,6 +19,8 @@ import Users from "../../Pages/Dashboard/AdminPanel/MangeUsers/Users";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import ManageProperties from "../../Pages/Dashboard/AdminPanel/ManageProperties/ManageProperties";
 import AdminRoute from "../AdminRoute";
+import PropertyBought from "../../Pages/Dashboard/user/PropertyBought";
+import Payment from "../../Pages/Dashboard/user/Payment";
 
 
 
@@ -77,6 +79,15 @@ const router = createBrowserRouter([
             {
                 path: 'wishlist',
                 element: <Wishlist></Wishlist>
+            },
+            {
+                path: 'offer',
+                element: <PropertyBought></PropertyBought>
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5001/proposal/${params.id}`)
             },
             {
                 path: 'make-an-offer/:id',

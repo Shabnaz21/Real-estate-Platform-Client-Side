@@ -1,14 +1,16 @@
 import { FaHome, FaUserCog } from "react-icons/fa";
 import { MdOutlineContactSupport, MdOutlineRateReview } from "react-icons/md";
+import { RiLogoutBoxLine } from "react-icons/ri";
 import { ImProfile } from "react-icons/im";
 import { BiStoreAlt } from "react-icons/bi";
 import { AiOutlineProfile } from "react-icons/ai";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
 import useAdmin from "../Hooks/useAdmin";
+import useLogOut from "../Hooks/useLogOut";
 
 const SideNavbar = () => {
-
+    const logOut = useLogOut();
     const [isAdmin] = useAdmin();
     console.log(isAdmin);
 
@@ -92,9 +94,11 @@ const SideNavbar = () => {
                                                     Wishlist
                                                 </li>
                                             </NavLink>
-                                            <NavLink
+                                            <NavLink to='/dashboard/offer'
                                                 className={({ isActive }) =>
-                                                    isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                                    isActive ?
+                                                        'flex items-center px-6 text-[#5fd2e9] md:text-lg'
+                                                        : 'flex px-6 items-center md:text-lg'
                                                 }
                                             
                                             >
@@ -142,6 +146,14 @@ const SideNavbar = () => {
                                     </span>
                                     <span className='text-lg'>Contact</span>
                                 </NavLink>
+                                <div onClick={logOut}
+                                    className="flex items-center px-6 text-gray-300
+                                     group hover:text-white ">
+                                    <span className="inline-block mr-3">
+                                        <RiLogoutBoxLine className='text-xl' />
+                                    </span>
+                                    <span className='text-lg'>Sign Out</span>
+                                </div>
                             </li>
                         </ul>
                     </div>

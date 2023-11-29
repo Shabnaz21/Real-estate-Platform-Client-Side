@@ -35,7 +35,11 @@ console.log(profile);
 
     return (
         <section className='container mx-auto'>
-            <header className="px-2 py-4 mt-16 flex flex-col justify-center items-center text-center">
+            <div className="flex justify-start item-start space-y-2 flex-col mt-10">
+                <h1 className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9
+                     text-gray-800 font-poppins">My Profile</h1>
+            </div>
+            <div className="px-2 py-4 mt-16 flex flex-col justify-center items-center text-center">
                 <img className="inline-flex object-cover border-4
                  border-red-600 rounded-full shadow-[5px_5px_0_0_rgba(0,0,0,1)]
                   shadow-red-600/100  bg-red-50 
@@ -72,7 +76,7 @@ console.log(profile);
                             <FaGithub /> </a>
                     </li>
                 </ul>
-            </header>
+            </div>
         </section>
     );
 };
