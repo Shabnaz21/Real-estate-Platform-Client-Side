@@ -6,7 +6,7 @@ import PropertyReview from "./PropertyReview";
 
 const PropertyInfo = ({ PropertyData }) => {
     const { propertyTitle, priceRange, location,
-        propertySpecifications, propertyDescription, additionalFeatures } = PropertyData;
+        propertySpecifications, propertyDescription, additionalFeatures, agentInformation } = PropertyData;
     return (
         <div className='col-span-4 flex flex-col gap-8 mt-10'>
             <div className='flex flex-col gap-2 '>
@@ -79,6 +79,7 @@ const PropertyInfo = ({ PropertyData }) => {
              border-red-500 pl-2'>Give a Review:</h3>
                 <PropertyReview
                     propertyName={propertyTitle}
+                    agentInfo={agentInformation}
                 ></PropertyReview>
             </div>
         </div>

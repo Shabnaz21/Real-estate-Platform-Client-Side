@@ -2,11 +2,14 @@ import Swal from "sweetalert2";
 import useAxios from "../../../Hooks/useAxios";
 import useAuth from "../../../Hooks/useAuth";
 
-const PropertyReview = ({ propertyName }) => {
-    console.log(propertyName);
+const PropertyReview = ({ propertyName, agentInfo }) => {
+    console.log(agentInfo);
+
     const { user } = useAuth();
     const useEmail = user?.email;
     const axios = useAxios();
+    const agentName = agentInfo?.agentName;
+    const agentImage = agentInfo?.agentImage;
 
     const handleReview = event => {
         event.preventDefault();
@@ -21,8 +24,8 @@ const PropertyReview = ({ propertyName }) => {
         const reviewCollection = {
             reviewerName, reviewerEmail: useEmail,
             reviewerDesignation,
-            reviewDate, reviewDescription,
-            propertyTitle: propertyName, reviewerImage
+            reviewDate, reviewDescription, agentName,
+            agentImage, propertyTitle: propertyName, reviewerImage
         }
         //send Data with axios
         axios.post('/reviews', reviewCollection)

@@ -1,13 +1,20 @@
-import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import useAuth from "../../Hooks/useAuth";
-import useProfile from "../../Hooks/UseProfile";
 import { Spinner } from "flowbite-react";
-
+import useAuth from "../../../Hooks/useAuth";
+import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import axios from "axios";
+import { useEffect } from "react";
 
 const UserProfile = () => {
-    const [profile] = useProfile();
+    const { user, loading } = useAuth();
+    console.log(user);
 
-    const { loading } = useAuth();
+    useEffect(() => {
+        axios.get(`/users?email=${user?.email}`)
+            .then(res => {
+                console.log(res?.data);
+            })
+    }, [axios])
+    
     // loading
     if (loading) {
         return (<div className="flex mx-56 place-content-center">
@@ -16,21 +23,6 @@ const UserProfile = () => {
             </div>
         </div>)
     }
-
-    if (!profile || !profile[0]) {
-       
-        return <div className="container mx-auto">
-            <div className="flex place-content-center w-9/12 mt-32 mx-auto">
-                <img src="https://i.ibb.co/pvfdMWt/website-error-6333614-5230174.png"
-                    className="w-[800px]"
-                    alt="Sorry! Error" />
-
-            </div>
-        </div>;
-    }
-console.log(profile);
-    const user = profile[0];
-    console.log(user);
 
 
     return (
@@ -44,20 +36,19 @@ console.log(profile);
                  border-red-600 rounded-full shadow-[5px_5px_0_0_rgba(0,0,0,1)]
                   shadow-red-600/100  bg-red-50 
                    text-red-600 h-24 w-24 !h-48 !w-48"
-                    src={user.image} alt={user.name} />
+                    src={user.photoURL} alt={user.displayName} />
                 <h1 className="text-2xl text-gray-500 font-bold mt-5">
-                    {user.name}
+                   Name: {user.displayName}
                 </h1>
                 <h2 className="text-base mt-2  md:text-xl text-gray-500 font-semibold">
-                    {user.email}
+                   Email: {user?.email}
                 </h2>
                 {
                     user.role ? <p className="text-base mt-2  md:text-lg text-gray-500 font-semibold">
-                        Role: <span className="uppercase">{user.role}</span>
+                        Role: <span className="uppercase">{user?.role}</span>
                     </p> :
                         <></>
                 }
-
                 <ul className="flex flex-row mt-5 text-2xl text-red-600">
                     <li className="mx-2">
                         <a href="">

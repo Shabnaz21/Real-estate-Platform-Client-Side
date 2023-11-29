@@ -12,7 +12,6 @@ import Properties from "../../Pages/Properties/Properties";
 import PropertyDetails from "../../Pages/Properties/PropertyDetails/PropertyDetails";
 import DashboardLayout from "../../LayOut/DashboardLayout";
 import PrivateRoutes from "../PrivateRoutes";
-import UserProfile from "../../Pages/Dashboard/UserProfile";
 import Wishlist from "../../Pages/Dashboard/user/Wishlist";
 import Offer from "../../Pages/Dashboard/user/Offer";
 import Users from "../../Pages/Dashboard/AdminPanel/MangeUsers/Users";
@@ -21,6 +20,9 @@ import ManageProperties from "../../Pages/Dashboard/AdminPanel/ManageProperties/
 import AdminRoute from "../AdminRoute";
 import PropertyBought from "../../Pages/Dashboard/user/PropertyBought";
 import Payment from "../../Pages/Dashboard/user/Payment";
+import AdminProfile from "../../Pages/Dashboard/AdminPanel/adminProfile";
+import UserProfile from "../../Pages/Dashboard/user/userProfile";
+import MyReview from "../../Pages/Dashboard/user/MyReview";
 
 
 
@@ -73,7 +75,7 @@ const router = createBrowserRouter([
                 element: <Dashboard></Dashboard>
             },
             {
-                path: 'my-profile',
+                path: 'user-profile',
                 element: <UserProfile></UserProfile>
             },
             {
@@ -94,7 +96,16 @@ const router = createBrowserRouter([
                 element: <Offer></Offer>,
                 loader: ({ params }) => fetch(`http://localhost:5001/wishlist/${params.id}`)
             },
+            {
+                path: 'my-reviews',
+                element: <MyReview></MyReview>
+            },
             // admin
+            {
+                path: 'admin',
+                element: <AdminProfile></AdminProfile>
+
+            },
             {
                 path: 'users',
                 element: <AdminRoute><Users></Users></AdminRoute>

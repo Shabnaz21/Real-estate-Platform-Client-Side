@@ -31,7 +31,7 @@ const Wishlist = () => {
                         if (data?.data?.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                'The property has been deleted.',
+                                'The wishlist has been deleted.',
                                 'success'
                             );
                         }
