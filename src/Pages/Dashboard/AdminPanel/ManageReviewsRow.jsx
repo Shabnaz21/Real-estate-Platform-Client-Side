@@ -12,8 +12,8 @@ const ManageReviewsRow = ({ review, handleDelete }) => {
                     <Checkbox />
                 </Table.Cell>
                 <Table.Cell>
-                    <div className="flex items-center gap-4">
-                        <div><img src={reviewerImage} alt={reviewerName} className="w-16 h-16 rounded" /></div>
+                    <div className="flex items-center gap-4 ">
+                        <div><img src={reviewerImage} alt={reviewerName} className="w-14 h-12 rounded " /></div>
                         <div className="font-bold text-md">{reviewerName}</div>
                     </div>
                 </Table.Cell>
@@ -21,12 +21,12 @@ const ManageReviewsRow = ({ review, handleDelete }) => {
                     {reviewerEmail}
                 </Table.Cell>
                 <Table.Cell>
-                    <p className="mx-40">{reviewDescription}</p>
+                    <p className="mx-48 text-center">{reviewDescription}</p>
                 </Table.Cell>
                 <Table.Cell>
-                    <Link> <button
+                    <Link> <button 
                         onClick={() => handleDelete(_id)}
-                        className="font-medium btn btn-sm text-red-600 dark:text-red-500 hover:underline"
+                        className="font-medium btn btn-sm text-red-600 mx-10 dark:text-red-500 hover:underline"
                     > Remove
                     </button></Link>
                 </Table.Cell>

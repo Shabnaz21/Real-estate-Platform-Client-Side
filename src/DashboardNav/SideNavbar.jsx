@@ -14,7 +14,6 @@ const SideNavbar = () => {
     const logOut = useLogOut();
     const [isAdmin] = useAdmin();
     const [isAgent] = useAgent();
-    console.log(isAdmin);
 
     return (
         <>

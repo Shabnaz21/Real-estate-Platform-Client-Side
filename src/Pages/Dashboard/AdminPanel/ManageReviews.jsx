@@ -11,10 +11,13 @@ const ManageReviews = () => {
     const [reviews, setReviews] = useState([]);
     const [refetch] = useReview();
     const [lists, setLists] = useState([])
+
     useEffect(() => {
-        axios.get(`/reviews}`)
+        axios.get(`/reviews?}`)
             .then(res => {
+                // setReviews(res?.data);
                 setReviews(res?.data);
+
             })
     }, [axios])
 
@@ -72,10 +75,10 @@ const ManageReviews = () => {
                                     reviewer email
                                 </Table.HeadCell>
                                 <Table.HeadCell>
-                                    Review
+                                    <p className="text-center"> Review</p>
                                 </Table.HeadCell>
                                 <Table.HeadCell>
-                                    action
+                                    <p className="mx-10 text-center">action</p> 
                                 </Table.HeadCell>
                             </Table.Head>
                             <Table.Body className="divide-y">
