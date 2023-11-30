@@ -3,8 +3,70 @@ import { Helmet } from "react-helmet-async";
 import { FaBed } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { MdOutlineBathroom } from "react-icons/md";
+import useAxios from "../../../Hooks/useAxios";
+import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HISTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddProperty = () => {
+
+    const axios = useAxios();
+
+    const { user } = useAuth();
+
+    const agentName = user?.displayName;
+    const agentEmail = user?.email;
+    const agentImage = user?.photoURL;
+
+    // const { register, handleSubmit, reset } = useForm();
+
+    const handleSubmit = async(event) => {
+        event.preventDefault();
+        const form = event.target;
+        const title = form.title.value;
+        const PImage = form.propertyImage.value;
+        const description = form.description.value;
+        const price = form.price.value;
+        const type = form.type.value;
+        const bedRoom = form.bedRoom.value;
+        const bathRoom = form.BathRoom.value;
+        const footage = form.sqt.value;
+        const agentPhone = form.agentPhone.value;
+        const location = form.location.value;
+        const extraFeature = form.ExtraFeature.value;  
+
+        form.reset();
+        
+        const propertyData = {
+            agentInformation: { agentName, agentEmail, agentImage, agentPhone },
+            propertyTitle: title,
+            propertyImage: PImage,
+            propertySpecifications: {
+                type, bedRoom,
+                bathRoom, footage},
+            propertyDescription: description, priceRange: price, location,
+            extraFeature
+        }
+        await onSubmit(propertyData);
+    }
+ 
+    const onSubmit = async (data) => {
+        
+        const imageFile = { image: data.propertyImage }
+        try {
+            const res = await axios.post(image_hosting_api, imageFile, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                },
+                withCredentials: false,
+            });
+            console.log(res.data);
+        } catch (error) {
+            console.error("Error:", error.response.data);
+        }   
+    }
+
     return (
         <section className='container mx-auto m-10'>
             <Helmet>
@@ -23,7 +85,7 @@ const AddProperty = () => {
                     </p>
                 </div>
                 <div>
-                    <form
+                    <form onSubmit={handleSubmit}
                         // onSubmit={handleOffer}
                         className="xl:mx-60 lg:mx-40 mt-10 space-y-3">
                         <div className="xl:mx-28">
@@ -35,6 +97,7 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="title"
+                                        // {...register('title', { required: true })}
                                         placeholder="Property Name"
                                         required />
                                 </div>
@@ -46,6 +109,7 @@ const AddProperty = () => {
                                                 className="text-xl font-poppins font-semibold" />
                                         </div>
                                         <FileInput id="file"
+                                            // {...register('image', { required: true })}
                                         name="propertyImage"/>
                                     </div>
                                 </div>
@@ -60,6 +124,7 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="description"
+                                        // {...register('description', { required: true })}
                                         placeholder="Give a Property Description"
                                         required />
                                 </div>
@@ -71,7 +136,8 @@ const AddProperty = () => {
                                             value="Price range " />
                                     </div>
                                     <TextInput
-                                       name="price"
+                                        name="price"
+                                        // {...register('price', { required: true })}
                                         placeholder="Give Your Asking Price Range"
                                         required />
                                 </div>
@@ -86,6 +152,7 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="type"
+                                        // {...register('type', { required: true })}
                                         placeholder="Property Type"
                                         required />
                                 </div>
@@ -117,6 +184,7 @@ const AddProperty = () => {
                                             value="BathRoom" />
                                     </div>
                                     <Select name="BathRoom"
+                                        // {...register('bathRoom', { required: true })}
                                         icon={MdOutlineBathroom}
                                         required>
                                         <option>1</option>
@@ -134,6 +202,7 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="sqt"
+                                        // {...register('squareFootage', { required: true })}
                                         placeholder="Square Footage"
                                         required />
                                 </div>
@@ -148,8 +217,9 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="agentName"
+                                  defaultValue={user?.displayName}
                                         placeholder="Agent Name"
-                                        required />
+                                        disabled />
                                 </div>
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
@@ -157,7 +227,8 @@ const AddProperty = () => {
                                             className="text-xl font-poppins font-semibold" />
                                     </div>
                                     <TextInput name="agentEmail" type="email"
-                                        icon={HiMail} placeholder="name@flowbite.com" required />
+                                        defaultValue={user?.email}
+                                        icon={HiMail} placeholder="name@flowbite.com" disabled/>
                                 </div>
                             </div>
                             {/* agent -2line */}
@@ -170,8 +241,9 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="agentImage"
+                                       disabled
                                         placeholder="Agent Image"
-                                        required />
+                                      defaultValue={user?.photoURL} />
                                 </div>
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
@@ -181,6 +253,7 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="agentPhone"
+                                        // {...register('agentPhone', { required: true })}
                                         placeholder="Agent Phone"
                                         required />
                                 </div>
@@ -194,7 +267,8 @@ const AddProperty = () => {
                                             value="Property Location" />
                                     </div>
                                     <TextInput
-                                        id="location"
+                                        name="location"
+                                        // {...register('location', { required: true })}
                                         placeholder="Property Location"
                                         required />
                                 </div>
@@ -204,6 +278,7 @@ const AddProperty = () => {
                                     </div>
                                     <Textarea name="ExtraFeature" placeholder="Give Your Property Extra Features"
                                         required rows={6}
+                                        // {...register('ExtraFeature', { required: true })}
                                         helperText={
                                             <>
                                                 Please give All Features in a
