@@ -11,7 +11,7 @@ const AdminProfile = () => {
     // loading
     if (loading) {
         return (<div className="flex mx-56 place-content-center mt-10">
-            return <div className="flex place-content-center">
+            <div className="flex place-content-center">
                 <Spinner aria-label="Extra large spinner example" size="xl" />
             </div>
         </div>)
@@ -26,7 +26,7 @@ const AdminProfile = () => {
                     alt="Sorry! Error" />
 
             </div>
-        </div>;
+        </div>
     }
 
     const user = profile[0];

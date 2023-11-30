@@ -23,6 +23,8 @@ import Payment from "../../Pages/Dashboard/user/Payment";
 import UserProfile from "../../Pages/Dashboard/user/userProfile";
 import MyReview from "../../Pages/Dashboard/user/MyReview";
 import AdminProfile from "../../Pages/Dashboard/AdminPanel/MyProfile";
+import AgentProfile from "../../Pages/Dashboard/AgentPanel/AgentProﬁle";
+import AddProperty from "../../Pages/Dashboard/AgentPanel/AddProperty";
 
 
 
@@ -100,6 +102,15 @@ const router = createBrowserRouter([
                 path: 'my-reviews',
                 element: <MyReview></MyReview>
             },
+            //
+            {
+                path: 'agent-profile',
+                element:<AgentProfile></AgentProfile>
+            },
+            {
+                path: 'add-property', 
+                element:<AddProperty></AddProperty>
+            },
             // admin
             {
                 path: 'admin',
@@ -115,6 +126,7 @@ const router = createBrowserRouter([
                     <ManageProperties></ManageProperties>
                 </AdminRoute>
             }
+           
         ]
     }
 ]);

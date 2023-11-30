@@ -8,10 +8,12 @@ import { RiSecurePaymentLine } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
 import useAdmin from "../Hooks/useAdmin";
 import useLogOut from "../Hooks/useLogOut";
+import useAgent from "../Hooks/useAgent";
 
 const SideNavbar = () => {
     const logOut = useLogOut();
     const [isAdmin] = useAdmin();
+    const [isAgent] = useAgent();
     console.log(isAdmin);
 
     return (
@@ -74,7 +76,58 @@ const SideNavbar = () => {
                                         </li>  
                                     </li>
                                     :
-                                    <>
+                                isAgent ? <>
+                                    <li className="text-gray-300 text-xl m-2">
+                                    <li className=" text-gray-300  space-y-3 mt-5  mb-5">
+                                        <NavLink to='/dashboard/agent-profile'
+                                            className={({ isActive }) =>
+                                                isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                            }>
+                                            <span className="inline-block mr-3">
+                                                <ImProfile className='text-xl' />
+                                            </span>
+                                            <span className='text-lg'>Agent Profile</span>
+                                        </NavLink>
+                                                <NavLink to='/dashboard/add-property'
+                                            className={({ isActive }) =>
+                                                isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                            }>
+                                            <span className="inline-block mr-3">
+                                                <AiOutlineProfile className='text-xl ' />
+                                            </span>
+                                                <span className='text-lg'> Add Property</span>
+                                        </NavLink>
+                                        <NavLink to='/dashboard/users'
+                                            className={({ isActive }) =>
+                                                isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                            }>
+                                            <span className="inline-block mr-3">
+                                                <FaUserCog className='text-xl' />
+                                            </span>
+                                                <span className='text-lg'> My Added properties</span>
+                                        </NavLink>
+                                        <NavLink to='/dashboard/manage-reviews'
+                                            className={({ isActive }) =>
+                                                isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                            }>
+                                            <span className="inline-block mr-3">
+                                                <RiSecurePaymentLine className='text-xl' />
+                                            </span>
+                                                <span className='text-lg'>My Sold Properties</span>
+                                        </NavLink>
+                                        <NavLink to='/dashboard/manage-reviews'
+                                            className={({ isActive }) =>
+                                                isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
+                                            }>
+                                            <span className="inline-block mr-3">
+                                                <RiSecurePaymentLine className='text-xl' />
+                                            </span>
+                                                <span className='text-lg'>Requested/Offered properties</span>
+                                        </NavLink>
+
+                                    </li>
+                                </li>
+                                </> : <>
                                         <li className="text-gray-300 text-xl m-2">
                                             <NavLink to='/dashboard/user-profile'
                                                 className={({ isActive }) =>
@@ -100,7 +153,7 @@ const SideNavbar = () => {
                                                         'flex items-center px-6 text-[#5fd2e9] md:text-lg'
                                                         : 'flex px-6 items-center md:text-lg'
                                                 }
-                                            
+
                                             >
                                                 <li className="mb-2 flex items-center gap-3">
                                                     <RiSecurePaymentLine /> Property Bought</li>
@@ -114,9 +167,8 @@ const SideNavbar = () => {
                                                     <MdOutlineRateReview /> My Reviews</li>
                                             </NavLink>
 
-                                        </li> 
-                                        
-                                    </>
+                                        </li>
+                                </>
                             }
                             
                             {/* shared nav */}

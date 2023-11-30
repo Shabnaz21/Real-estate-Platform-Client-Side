@@ -6,11 +6,13 @@ import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import useLogOut from '../../Hooks/useLogOut';
 import useAdmin from '../../Hooks/useAdmin';
+import useAgent from '../../Hooks/useAgent';
 
 const Nav = () => {
     const logOut = useLogOut();
     const { user } = useAuth();
     const [isAdmin] = useAdmin();
+    const [isAgent] = useAgent();
  
     const menus = <>
         <li><NavLink
@@ -114,12 +116,18 @@ const Nav = () => {
                                                 <Dropdown.Item>
                                                     My Profile
                                                 </Dropdown.Item>
-                                            </Link>) : (
-                                                    <Link to='/dashboard/user-profile'>
+                                            </Link>) : isAgent ? (
+                                                    <Link to='/dashboard/agent-profile'>
                                                         <Dropdown.Item>
                                                             My Profile
                                                         </Dropdown.Item>
                                                     </Link>
+                                                ) : (
+                                                        <Link to='/dashboard/user-profile'>
+                                                            <Dropdown.Item>
+                                                                My Profile
+                                                            </Dropdown.Item>
+                                                        </Link>
                                             )
                                         }
                                         <Dropdown.Item>Settings</Dropdown.Item>
