@@ -25,7 +25,7 @@ const FeaturedProperty = () => {
             <div className="mx-10">
                 <SectionTitle
                     subHeading={'Tending'}
-                    heading={'Featured Properties'}
+                    heading={'Advertisement Properties'}
                 ></SectionTitle>
                 <p className="mt-4 text-xl">Find your suitable house here and stay safe and relax with pleasure</p>
             </div>

@@ -29,6 +29,7 @@ import MyAddedProperties from "../../Pages/Dashboard/AgentPanel/MyAddedPropertie
 import UpdateProperties from "../../Pages/Dashboard/AgentPanel/UpdateProperties";
 import MySoldProperties from "../../Pages/Dashboard/AgentPanel/MySoldProperties";
 import AgentRoute from "./AgentRoute";
+import ManageReviews from "../../Pages/Dashboard/AdminPanel/ManageReviews";
 
 
 
@@ -151,6 +152,9 @@ const router = createBrowserRouter([
                 element: <AdminRoute>
                     <ManageProperties></ManageProperties>
                 </AdminRoute>
+            }, {
+                path: 'manage-reviews',
+                element: <ManageReviews></ManageReviews>
             }
 
         ]

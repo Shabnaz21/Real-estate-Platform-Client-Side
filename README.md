@@ -33,9 +33,9 @@ NewVilla is a Real estate Platform (an online platform where people can add and 
 - My Profile, Wishlist, Property Bought, My Reviews.
 
  - **My Profile**: 
-  - Displays the name of the user.
-  - Shows the profile picture of the user.
-  - Shows the user's role; excluded for regular users to maintain simplicity.
+   - Displays the name of the user.
+   - Shows the profile picture of the user.
+   - Shows the user's role; excluded for regular users to maintain simplicity.
 
  - **Wishlist**:
    - Displays user-wishlist properties.
