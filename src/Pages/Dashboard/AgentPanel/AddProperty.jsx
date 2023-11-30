@@ -11,38 +11,68 @@ import { useForm } from "react-hook-form";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HISTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddProperty = () => {
-
     const axios = useAxios();
     const { user } = useAuth();
-
     const agentName = user?.displayName;
     const agentEmail = user?.email;
     const agentImage = user?.photoURL;
 
-    const { register, handleSubmit } = useForm();
-
-
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
         const formData = new FormData();
-        formData.append('image', data.propertyImage[0]); 
-        console.log(data.propertyImage[0]);
-        
+        formData.append('image', data.propertyImage[0]);
+
         // Append the agent information
         formData.append('agentName', agentName);
         formData.append('agentEmail', agentEmail);
         formData.append('agentImage', agentImage);
-        console.log(formData);
-        try {
-            const res = await axios.post(image_hosting_api, formData, {
-                headers: {
-                    'content-type': 'multipart/form-data'
+        const res = await axios.post(image_hosting_api, formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            },
+            withCredentials: false,
+        });
+        console.log(res.data);
+
+        if (res.data.success) {
+            // now send the menu item data to the server with the image url
+            const propertyData = {
+                propertyTitle: data.title,
+                propertyImage: res.data.data.url, 
+                propertyDescription: data.description,
+                priceRange: data.price,
+                agentInformation: {
+                    agentName,
+                    agentImage,
+                    agentEmail,
+                    agentPhone: data.agentPhone,
                 },
-                withCredentials: false,
-            });
-            console.log(res.data);
-        } catch (error) {
-            console.error("Error:", error.response.data);
-        }   
+                propertySpecifications: {
+                    propertyType: data.type,
+                    bedrooms: parseInt(data.bedRoom),
+                    bathrooms: parseInt(data.bathRoom), 
+                    squareFootage: parseInt(data.sqt), 
+                },
+                location: data.location,
+                additionalFeatures: data.ExtraFeature.split('\n').map(feature => feature.trim()), // Split features by newline
+
+            };
+            // 
+            const addRes = await axios.post('/properties', propertyData);
+            console.log(addRes.data)
+            if (addRes.data.insertedId) {
+                // show success popup
+                reset();
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: `${data.title} is added to the Property.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+        console.log('with image url', res.data);
     }
 
     return (
@@ -64,7 +94,7 @@ const AddProperty = () => {
                 </div>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}
-                    
+
                         className="xl:mx-60 lg:mx-40 mt-10 space-y-3">
                         <div className="xl:mx-28">
                             <div className="md:flex gap-20">
@@ -87,12 +117,12 @@ const AddProperty = () => {
                                                 className="text-xl font-poppins font-semibold" />
                                         </div>
                                         <FileInput id="file"
-                                        type='file'
+                                            type='file'
                                             {...register('propertyImage', { required: true })}
-                                        name="propertyImage"/>
+                                            name="propertyImage" />
                                     </div>
                                 </div>
-                                
+
                             </div>
                             {/* 2 line */}
                             <div className="md:flex gap-20 mt-5">
@@ -144,7 +174,7 @@ const AddProperty = () => {
                                     </div>
                                     <Select id="BedRoom"
                                         name="bedRoom"
-                                        icon={FaBed}    
+                                        icon={FaBed}
                                         required>
                                         <option>2</option>
                                         <option>3</option>
@@ -196,7 +226,7 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="agentName"
-                                  defaultValue={user?.displayName}
+                                        defaultValue={user?.displayName}
                                         placeholder="Agent Name"
                                         disabled />
                                 </div>
@@ -207,7 +237,7 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput name="agentEmail" type="email"
                                         defaultValue={user?.email}
-                                        icon={HiMail} placeholder="name@flowbite.com" disabled/>
+                                        icon={HiMail} placeholder="name@flowbite.com" disabled />
                                 </div>
                             </div>
                             {/* agent -2line */}
@@ -220,9 +250,9 @@ const AddProperty = () => {
                                     </div>
                                     <TextInput
                                         name="agentImage"
-                                       disabled
+                                        disabled
                                         placeholder="Agent Image"
-                                      defaultValue={user?.photoURL} />
+                                        defaultValue={user?.photoURL} />
                                 </div>
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
@@ -268,8 +298,8 @@ const AddProperty = () => {
                                 </div>
                             </div>
                             <div>
-                            
-                        </div>
+
+                            </div>
                             {/* Button */}
                             {/* onClick={() => handleEdit(_id)} */}
                             <div className="form-control flex place-content-center">
