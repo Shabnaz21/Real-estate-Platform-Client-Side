@@ -35,7 +35,6 @@ const AddProperty = () => {
         const agentPhone = form.agentPhone.value;
         const location = form.location.value;
         const extraFeature = form.ExtraFeature.value;  
-
         form.reset();
         
         const propertyData = {

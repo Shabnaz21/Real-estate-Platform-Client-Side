@@ -97,7 +97,7 @@ const SideNavbar = () => {
                                             </span>
                                                 <span className='text-lg'> Add Property</span>
                                         </NavLink>
-                                        <NavLink to='/dashboard/users'
+                                                <NavLink to='/dashboard/my-added-properties'
                                             className={({ isActive }) =>
                                                 isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
                                             }>
@@ -106,7 +106,7 @@ const SideNavbar = () => {
                                             </span>
                                                 <span className='text-lg'> My Added properties</span>
                                         </NavLink>
-                                        <NavLink to='/dashboard/manage-reviews'
+                                                <NavLink to='/dashboard/sold-properties'
                                             className={({ isActive }) =>
                                                 isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
                                             }>

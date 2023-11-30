@@ -25,6 +25,10 @@ import MyReview from "../../Pages/Dashboard/user/MyReview";
 import AdminProfile from "../../Pages/Dashboard/AdminPanel/MyProfile";
 import AgentProfile from "../../Pages/Dashboard/AgentPanel/AgentProﬁle";
 import AddProperty from "../../Pages/Dashboard/AgentPanel/AddProperty";
+import MyAddedProperties from "../../Pages/Dashboard/AgentPanel/MyAddedProperties";
+import UpdateProperties from "../../Pages/Dashboard/AgentPanel/UpdateProperties";
+import MySoldProperties from "../../Pages/Dashboard/AgentPanel/MySoldProperties";
+import AgentRoute from "./AgentRoute";
 
 
 
@@ -102,14 +106,34 @@ const router = createBrowserRouter([
                 path: 'my-reviews',
                 element: <MyReview></MyReview>
             },
-            //
+            //agent
             {
                 path: 'agent-profile',
                 element:<AgentProfile></AgentProfile>
             },
             {
                 path: 'add-property', 
-                element:<AddProperty></AddProperty>
+                element: <AgentRoute>
+                    <AddProperty></AddProperty>
+                </AgentRoute>     
+            },
+            {
+                path: 'my-added-properties',
+                element: <AgentRoute>
+                    <MyAddedProperties></MyAddedProperties>
+                </AgentRoute>     
+            },
+            {
+                path: 'sold-properties',
+                element: <AgentRoute>
+                    <MySoldProperties></MySoldProperties>
+                </AgentRoute>
+            },
+            {
+                path: 'update-property',
+                element: <AgentRoute>
+                    <UpdateProperties></UpdateProperties>
+                </AgentRoute>
             },
             // admin
             {
@@ -120,7 +144,8 @@ const router = createBrowserRouter([
             {
                 path: 'users',
                 element: <AdminRoute><Users></Users></AdminRoute>
-            }, {
+            },
+            {
                 path: 'manage-properties',
                 element: <AdminRoute>
                     <ManageProperties></ManageProperties>
