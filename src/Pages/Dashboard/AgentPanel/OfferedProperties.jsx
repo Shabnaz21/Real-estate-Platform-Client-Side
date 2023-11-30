@@ -1,8 +1,47 @@
 import { Checkbox, Table } from "flowbite-react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+// import useProposal from "../../../Hooks/useProposal";
+import OfferedPropertiesRow from "./OfferedPropertiesRow";
+import useAxios from "../../../Hooks/useAxios";
 
 const OfferedProperties = () => {
 
+
+//Not Proper Work. Need to time invest!
+
+    const axios = useAxios();
+    const [proposal, setProposal] = useState([]);
+    // const [refetch] = useProposal();
+    // const [lists, setLists] = useState([])
+    const [status, setStatus] = useState(proposal.status)
+    useEffect(() => {
+        axios.get(`/proposal?}`)
+            .then(res => {
+                setProposal(res?.data);
+
+            })
+    }, [axios])
+
+    const handleVerify = () => {
+        axios.patch(`/proposal/${proposal._id}`, { status: 'verified' })
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    setStatus('verified')
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${proposal.propertyTitle} is an Verify Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            }).catch((error) => {
+                console.error('Error marking user as Property:', error);
+            });
+
+    } 
     return (
         <section className='container mx-auto m-10'>
             <Helmet>
@@ -29,7 +68,12 @@ const OfferedProperties = () => {
                         </Table.Head>
                         <Table.Body className="divide-y">
                             {
-                                
+                                proposal.map(item => <OfferedPropertiesRow
+                                    key={item._id}
+                                    proposal={proposal}
+                                    handleVerify={handleVerify}
+                                    status={status}
+                                ></OfferedPropertiesRow>)   
                          }
                             
                         </Table.Body>

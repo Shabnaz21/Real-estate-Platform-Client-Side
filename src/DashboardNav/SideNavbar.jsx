@@ -114,7 +114,7 @@ const SideNavbar = () => {
                                             </span>
                                                 <span className='text-lg'>My Sold Properties</span>
                                         </NavLink>
-                                        <NavLink to='/dashboard/manage-reviews'
+                                        <NavLink to='/dashboard/offered-properties'
                                             className={({ isActive }) =>
                                                 isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
                                             }>

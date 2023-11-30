@@ -30,6 +30,7 @@ import UpdateProperties from "../../Pages/Dashboard/AgentPanel/UpdateProperties"
 import MySoldProperties from "../../Pages/Dashboard/AgentPanel/MySoldProperties";
 import AgentRoute from "./AgentRoute";
 import ManageReviews from "../../Pages/Dashboard/AdminPanel/ManageReviews";
+import OfferedProperties from "../../Pages/Dashboard/AgentPanel/OfferedProperties";
 
 
 
@@ -136,6 +137,9 @@ const router = createBrowserRouter([
                     <UpdateProperties></UpdateProperties>
                 </AgentRoute>,
                 loader: ({ params }) => fetch(`https://newvilla-server.vercel.app/properties/${params.id}`)
+            }, {
+                path: 'offered-properties',
+                element: <OfferedProperties></OfferedProperties>
             },
             // admin
             {
