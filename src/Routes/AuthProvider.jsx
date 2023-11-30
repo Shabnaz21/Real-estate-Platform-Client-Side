@@ -65,19 +65,19 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const outsider = onAuthStateChanged(auth, currentUser => {
 
-            if (currentUser) {
-                //get token
-                const userInfo = { email: currentUser.email }
-                axios.post('/jwt', userInfo)
-                    .then(res => {
-                        if (res.data.token) {
-                            localStorage.setItem('access-token', res.data.token);
-                    }
-                })
-            } else {
-                //TODO :remove token
-                localStorage.removeItem('access-token');
-            }
+            // if (currentUser) {
+            //     //get token
+            //     const userInfo = { email: currentUser.email }
+            //     axios.post('/jwt', userInfo)
+            //         .then(res => {
+            //             if (res.data.token) {
+            //                 localStorage.setItem('access-token', res.data.token);
+            //         }
+            //     })
+            // } else {
+            //     //TODO :remove token
+            //     localStorage.removeItem('access-token');
+            // }
             setUser(currentUser);
             setLoading(false);
 

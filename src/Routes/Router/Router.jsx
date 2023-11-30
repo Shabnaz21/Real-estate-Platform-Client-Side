@@ -54,7 +54,7 @@ const router = createBrowserRouter([
                     <PropertyDetails>
                     </PropertyDetails>
                 </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5001/properties/${params.id}`)
+                loader: ({ params }) => fetch(`https://newvilla-server.vercel.app/properties/${params.id}`)
             },
             {
                 path: 'contact',
@@ -95,12 +95,12 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5001/proposal/${params.id}`)
+                loader: ({ params }) => fetch(`https://newvilla-server.vercel.app/proposal/${params.id}`)
             },
             {
                 path: 'make-an-offer/:id',
                 element: <Offer></Offer>,
-                loader: ({ params }) => fetch(`http://localhost:5001/wishlist/${params.id}`)
+                loader: ({ params }) => fetch(`https://newvilla-server.vercel.app/wishlist/${params.id}`)
             },
             {
                 path: 'my-reviews',
@@ -109,19 +109,19 @@ const router = createBrowserRouter([
             //agent
             {
                 path: 'agent-profile',
-                element:<AgentProfile></AgentProfile>
+                element: <AgentProfile></AgentProfile>
             },
             {
-                path: 'add-property', 
+                path: 'add-property',
                 element: <AgentRoute>
                     <AddProperty></AddProperty>
-                </AgentRoute>     
+                </AgentRoute>
             },
             {
                 path: 'my-added-properties',
                 element: <AgentRoute>
                     <MyAddedProperties></MyAddedProperties>
-                </AgentRoute>     
+                </AgentRoute>
             },
             {
                 path: 'sold-properties',
@@ -134,7 +134,7 @@ const router = createBrowserRouter([
                 element: <AgentRoute>
                     <UpdateProperties></UpdateProperties>
                 </AgentRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5001/properties/${params.id}`)
+                loader: ({ params }) => fetch(`https://newvilla-server.vercel.app/properties/${params.id}`)
             },
             // admin
             {
@@ -152,7 +152,7 @@ const router = createBrowserRouter([
                     <ManageProperties></ManageProperties>
                 </AdminRoute>
             }
-           
+
         ]
     }
 ]);
