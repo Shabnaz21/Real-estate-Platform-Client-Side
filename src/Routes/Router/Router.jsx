@@ -130,10 +130,11 @@ const router = createBrowserRouter([
                 </AgentRoute>
             },
             {
-                path: 'update-property',
+                path: 'update-property/:id',
                 element: <AgentRoute>
                     <UpdateProperties></UpdateProperties>
-                </AgentRoute>
+                </AgentRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5001/properties/${params.id}`)
             },
             // admin
             {

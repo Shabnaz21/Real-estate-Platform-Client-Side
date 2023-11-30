@@ -53,12 +53,13 @@ const AddProperty = () => {
                     bathrooms: parseInt(data.bathRoom), 
                     squareFootage: parseInt(data.sqt), 
                 },
+                status: 'pending',
                 location: data.location,
                 additionalFeatures: data.ExtraFeature.split('\n').map(feature => feature.trim()), // Split features by newline
 
             };
             // 
-            const addRes = await axios.post('/properties', propertyData);
+            const addRes = await axios.post('/properties', propertyData, );
             console.log(addRes.data)
             if (addRes.data.insertedId) {
                 // show success popup

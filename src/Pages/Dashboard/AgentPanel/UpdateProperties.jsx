@@ -1,11 +1,41 @@
 import { Label, TextInput } from "flowbite-react";
 import { Helmet } from "react-helmet-async";
+import { HiMail } from "react-icons/hi";
+import { useLoaderData } from "react-router-dom";
+import useAxios from "../../../Hooks/useAxios";
+import Swal from "sweetalert2";
 
 
 const UpdateProperties = () => {
+    const propertiesData = useLoaderData();
+    const axios = useAxios();
 
-    const handleUpdate = {
-        // TODO
+    const handleUpdate = event => {
+        event.preventDefault();
+        const form = event.target;
+        const propertyTitle = form.propertyTitle.value;
+        const propertyImage = form.PropertiesImage.value;
+        const location = form.location.value;
+        const price = form.price.value;
+
+        const updateData = {
+            propertyTitle, propertyImage, location, priceRange: price
+        }
+
+        axios.patch(`/properties/${propertiesData._id}`, updateData)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${propertyTitle} is an Verify Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            }).catch((error) => {
+                console.error('Error marking user as Property:', error);
+            }); 
     }
 
     return (
@@ -27,80 +57,48 @@ const UpdateProperties = () => {
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
                                         <Label htmlFor="username3"
-                                            className="text-xl font-poppins font-semibold" value="Property Title" />
+                                            className="text-xl font-poppins font-semibold" value="Update Property Title" />
                                     </div>
                                     <TextInput
-                                        name="title"
-                                        placeholder="Property Name"
-                                        required />
+                                        name="propertyTitle"
+                                        defaultValue={propertiesData?.propertyTitle}
+                                       />
                                 </div>
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
                                         <Label htmlFor="username3"
-                                            className="text-xl font-poppins font-semibold" value="Property Image" />
+                                            className="text-xl font-poppins font-semibold" value="Update Property Image" />
                                     </div>
                                     <TextInput
-                                        name="Properties Image"
-                                        // {...register('title', { required: true })}
-                                        placeholder="Property Image"
-                                        required />
+                                        name="PropertiesImage"
+                                        defaultValue={propertiesData?.propertyImage} />
                                 </div>
                             </div>
                             {/* 2 */}
-                            <div className="md:flex gap-20 mt-4">
+                            <div className="md:flex gap-20 mt-10">
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
                                         <Label htmlFor="username3"
-                                            className="text-xl font-poppins font-semibold" value="Property Location" />
+                                            className="text-xl font-poppins font-semibold" value="Update Property Location" />
                                     </div>
                                     <TextInput
                                         name="location"
-                                        // {...register('title', { required: true })}
-                                        placeholder="location"
-                                        required />
+                                        defaultValue={propertiesData?.location}
+                                        placeholder="location" />
                                 </div>
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
                                         <Label htmlFor="username3"
-                                            className="text-xl font-poppins font-semibold" value="Price Range" />
+                                            className="text-xl font-poppins font-semibold" value="Update Price Range" />
                                     </div>
                                     <TextInput
                                         name="price"
-                                        // {...register('title', { required: true })}
-                                        placeholder="Price"
-                                        required />
+                                        defaultValue={propertiesData?.priceRange}
+                                        placeholder="Price"/>
                                 </div>
                             </div>
                             {/* 3 */}
-                            <div className="md:flex gap-20 mt-4">
-                                <div className="form-control w-96">
-                                    <label className="label">
-                                        <span className="text-xl font-semibold">Property location</span>
-                                    </label>
-                                    <input type="text"
-                                        name='location'
-                                        defaultValue={location}
-                                        className="w-full px-8 py-4 mt-2 rounded-lg font-medium
-                                         bg-slate-100 border border-gray-200
-                                          placeholder-gray-500 text-sm 
-                                          focus:outline-none focus:border-red-500
-                                           focus:bg-white" disabled />
-                                </div>
-                                <div className="form-control w-96">
-                                    <label className="label">
-                                        <span className="text-xl font-semibold">Offered Amount </span>
-                                    </label>
-                                    <input type="text"
-                                        name='amount' placeholder="Give Your Amount (Must be Price Range)"
-                                        className="w-full px-8 py-4 mt-2 rounded-lg font-medium
-                                         bg-slate-100 border border-gray-200
-                                          placeholder-gray-500 text-sm 
-                                          focus:outline-none focus:border-red-500
-                                           focus:bg-white"  required />
-                                </div>
-                            </div>
-                            {/* 4 */}
-                            <div className="md:flex gap-20 mt-4">
+                            <div className="md:flex gap-20 mt-10">
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
                                         <Label htmlFor="username3"
@@ -109,24 +107,23 @@ const UpdateProperties = () => {
                                     </div>
                                     <TextInput
                                         name="agentName"
-                                        // {...register('title', { required: true })}
-                                        defaultValue={'Agent Name'} disabled/>
+                                        defaultValue={propertiesData?.agentInformation?.agentName}
+                                        disabled />
                                 </div>
                                 <div className="form-control w-96">
                                     <div className="mb-2 block">
                                         <Label htmlFor="username3"
-                                            className="text-xl font-poppins font-semibold"
-                                            value="Agent Email" />
+                                            className="text-xl font-poppins font-semibold" value="Agent Email" />
                                     </div>
                                     <TextInput
                                         name="agentEmail"
-                                        // {...register('title', { required: true })}
-                                       defaultValue={'agent Email'}
-                                       disabled />
+                                        icon={HiMail}
+                                        defaultValue={propertiesData?.agentInformation?.agentEmail}
+                                        disabled/>
                                 </div>
                             </div>
                             {/* Button */}
-                            <div className="form-control flex place-content-center">
+                            <div className="form-control flex place-content-center mt-10">
                                 <input type="submit"
                                     value="Update Property"
                                     className="text-xl font-poppins
