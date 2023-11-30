@@ -34,7 +34,7 @@ const SideNavbar = () => {
                                 isAdmin ?
                                     <li className="text-gray-300 text-xl m-2">
                                         <li className=" text-gray-300  space-y-3 mt-5  mb-5">  
-                                            <NavLink to='/dashboard/admin'
+                                            <NavLink to='/dashboard/admin-profile'
                                                 className={({ isActive }) =>
                                                     isActive ? 'flex items-center px-6 text-[#5fd2e9] md:text-lg' : 'flex px-6 items-center md:text-lg'
                                                 }>
@@ -82,7 +82,7 @@ const SideNavbar = () => {
                                                 }
                                             >
                                                 <li className="mb-2 flex items-center gap-3">
-                                                    <ImProfile ></ImProfile> User Profile
+                                                    <ImProfile ></ImProfile>My Profile
                                                 </li></NavLink>
                                             <NavLink to='/dashboard/wishlist'
                                                 className={({ isActive }) =>

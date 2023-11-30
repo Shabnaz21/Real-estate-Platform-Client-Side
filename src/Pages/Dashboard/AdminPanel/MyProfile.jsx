@@ -7,9 +7,10 @@ import { Spinner } from "flowbite-react";
 const AdminProfile = () => {
     const [profile] = useProfile();
     const { loading } = useAuth();
+    
     // loading
     if (loading) {
-        return (<div className="flex mx-56 place-content-center">
+        return (<div className="flex mx-56 place-content-center mt-10">
             return <div className="flex place-content-center">
                 <Spinner aria-label="Extra large spinner example" size="xl" />
             </div>

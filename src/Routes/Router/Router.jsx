@@ -20,9 +20,9 @@ import ManageProperties from "../../Pages/Dashboard/AdminPanel/ManageProperties/
 import AdminRoute from "../AdminRoute";
 import PropertyBought from "../../Pages/Dashboard/user/PropertyBought";
 import Payment from "../../Pages/Dashboard/user/Payment";
-import AdminProfile from "../../Pages/Dashboard/AdminPanel/adminProfile";
 import UserProfile from "../../Pages/Dashboard/user/userProfile";
 import MyReview from "../../Pages/Dashboard/user/MyReview";
+import AdminProfile from "../../Pages/Dashboard/AdminPanel/MyProfile";
 
 
 

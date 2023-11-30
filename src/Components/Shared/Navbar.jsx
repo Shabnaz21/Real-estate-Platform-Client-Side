@@ -5,10 +5,12 @@ import { IoLocation } from "react-icons/io5";
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import useLogOut from '../../Hooks/useLogOut';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Nav = () => {
     const logOut = useLogOut();
     const { user } = useAuth();
+    const [isAdmin] = useAdmin();
  
     const menus = <>
         <li><NavLink
@@ -107,10 +109,19 @@ const Nav = () => {
                                             <span className="block text-sm">{user.displayName}</span>
                                             <span className="block truncate text-sm font-medium">{user.email}</span>
                                         </Dropdown.Header>
-                                        <Link to='/dashboard/my-profile'><Dropdown.Item>
-                                            My Profile
-                                        </Dropdown.Item> </Link>
-                                        
+                                        {
+                                            isAdmin ? (<Link to='/dashboard/admin'>
+                                                <Dropdown.Item>
+                                                    My Profile
+                                                </Dropdown.Item>
+                                            </Link>) : (
+                                                    <Link to='/dashboard/user-profile'>
+                                                        <Dropdown.Item>
+                                                            My Profile
+                                                        </Dropdown.Item>
+                                                    </Link>
+                                            )
+                                        }
                                         <Dropdown.Item>Settings</Dropdown.Item>
                                         <Dropdown.Divider />
                                         <Dropdown.Item onClick={logOut}>Sign Out</Dropdown.Item>
